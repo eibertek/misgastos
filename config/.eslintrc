@@ -28,8 +28,10 @@
     "linebreak-style": "off",
     "jsx-a11y/href-no-hash": "off",
     "react/require-extension": "off",
+    "import/extensions": "off",
     "no-return-assign": "off",
     "react/prefer-stateless-function": "off",
+    "prop-types": "off",
     "no-prototype-builtins": "off",
     "max-len": ["error", 100, 2, {
       "ignoreUrls": true,
