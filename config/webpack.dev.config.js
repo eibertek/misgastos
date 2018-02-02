@@ -1,9 +1,15 @@
 const path = require('path');
 const webpack = require('webpack'); //to access built-in plugins
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const extractSass = new ExtractTextPlugin({
+  filename: "[name].[contenthash].css",
+  disable: process.env.NODE_ENV === "development"
+});
 
 module.exports = {
-    entry: './src/index.js',
-    output: {
+  entry: './src/index.js',
+  output: {
         filename: 'bundle.js',
         path: path.resolve('./', 'dist')
     },
@@ -33,15 +39,28 @@ module.exports = {
                 exclude: /node_modules/,
                 use: ['babel-loader']
             },
+/*            {
+                test: /\.scss$/,
+                use: extractSass.extract({
+                    use: ['css-loader', 'sass-loader'],
+                    // use style-loader in development
+                    fallback: "style-loader",
+                })
+            },*/
+            {
+                test: /\.scss$/,
+                loader: ['style-loader', 'css-loader', 'sass-loader'],
+            }
         ]
     },
     plugins: [
         new webpack.ProvidePlugin({
             "React": "react",
         }),
+        extractSass,
     ],
     devServer: {
-        open: true, // to open the local server in browser
+        open: false, // to open the local server in browser
         contentBase: './dist',
     },
 };

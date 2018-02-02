@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { getData } from '../service';
+import './styles.scss';
 
 class CountrySelect extends React.Component {
 
@@ -35,14 +36,18 @@ class CountrySelect extends React.Component {
 
   render() {
     return <Fragment>
-        <select onChange={this.onChangeOption}>
-            {this.renderCountries()}
-        </select>
-      <select onChange={this.onChangeOption}>
-          {this.renderCurrencies()}
-      </select>
-        <button>OK</button>
-      </Fragment>
+        <div>
+            <select className='countries' onChange={this.onChangeOption}>
+                {this.renderCountries()}
+            </select>
+        </div>
+        <div>
+            <select className='currencies' onChange={this.onChangeOption}>
+                {this.renderCurrencies()}
+            </select>
+        </div>
+        <button className='okBtn' >OK</button>
+      </Fragment>;
   }
 }
 

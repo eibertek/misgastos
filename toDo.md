@@ -50,8 +50,9 @@ Al ingresar por primera se pide:
 * Indicar Pais
 * Agregar Moneda
 * Indicar Precio de Dolar
-****************************
-Pantalla de Datos
+
+
+###Pantalla de Datos
 
 Gastos del Mes hasta el dia de la fecha
 Lista de ultimos gastos
