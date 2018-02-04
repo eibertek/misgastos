@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
-import { getData } from '../service';
-import './styles.scss';
+import { getData } from '../../service';
 
 class CountrySelect extends React.Component {
 
@@ -8,13 +7,11 @@ class CountrySelect extends React.Component {
       super(props);
       this.state = {
           countries: [],
-          currencies:[],
+          currencies:[{name:'Select one Country'}],
       };
-      //this.onChangeOption = this.onChangeOption.bind(this);
   }
 
   onChangeOption = (evt) => {
-      //console.log(this.state.countries[evt.target.value]);
       const countryData = this.state.countries[evt.target.value];
       this.setState({currencies: countryData.currencies});
       return 'AR';
@@ -31,23 +28,22 @@ class CountrySelect extends React.Component {
   }
 
   renderCurrencies() {
-       return this.state.currencies.map((country, index) => <option key={index} value={index}>{country.name}</option>)
+       return this.state.currencies.map((currency, index) => <option key={index} value={index}>{currency.name}</option>)
   }
 
   render() {
     return <Fragment>
-        <div>
+        <div className="ComponentSeparated">
             <select className='countries' onChange={this.onChangeOption}>
                 {this.renderCountries()}
             </select>
         </div>
-        <div>
+        <div  className="ComponentSeparated">
             <select className='currencies' onChange={this.onChangeOption}>
                 {this.renderCurrencies()}
             </select>
         </div>
-        <button className='okBtn' >OK</button>
-      </Fragment>;
+    </Fragment>
   }
 }
 

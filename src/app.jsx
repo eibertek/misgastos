@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import Moment from 'moment';
 import ReactDOM from 'react-dom';
-import CountrySelect from './countries/';
+import FirstTimeComponent from './FirstTime/';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       time: new Moment(),
+      firstTime:true,
     };
   }
-
+// frist time loading: on the first time we need the dialog box where you can choose country currency and change type
   componentWillMount() {
     this.startTimer();
   }
@@ -24,8 +25,7 @@ export default class App extends Component {
   }
 
   render() {
-    return <CountrySelect />;
+    return this.state.firstTime ? <FirstTimeComponent></FirstTimeComponent> : <div />;
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app-root'));
