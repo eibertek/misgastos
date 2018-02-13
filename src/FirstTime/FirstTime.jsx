@@ -11,8 +11,15 @@ class FirstTime extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount() {};
 
+  saveData = (data) => {
+    this.setState({ data });
+    };
+
+  persistData = () => {
+    return this.props.saveFirstTime(this.state.data);
+  }
   render() {
     return <div>
       <div className="modal-content">
@@ -22,8 +29,8 @@ class FirstTime extends React.Component {
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <CountrySelect />
-        <button  type="button" className='btn btn-primary' >OK</button>
+        <CountrySelect saveData={this.saveData}/>
+        <button  type="button"onClick={this.persistData} className='btn btn-primary' >OK</button>
       </div>
     </div>;
   }

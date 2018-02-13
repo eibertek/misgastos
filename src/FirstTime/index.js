@@ -1,3 +1,3 @@
-import FirstTime from './FirstTime.jsx';
+import FirstTime from './FirstTime.container.js';
 
 export default FirstTime;

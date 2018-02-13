@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Moment from 'moment';
-import ReactDOM from 'react-dom';
 import FirstTimeComponent from './FirstTime/';
 
 export default class App extends Component {

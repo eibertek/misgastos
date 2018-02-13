@@ -1,7 +1,7 @@
 export default (state={},action)=>{
   switch (action.type) {
-    case 'SET_COUNTRY':
-      return { storeme: state.storeme + action.data};
+    case 'SAVE_CURRENCY':
+      return { currency: action.data};
     default:
       return state;
   }
