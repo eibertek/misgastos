@@ -47,17 +47,24 @@ Reglas de negocios:
 
 Al ingresar por primera se pide:
 
-* Indicar Pais
-* Agregar Moneda
-* Indicar Precio de Dolar
+~~* Indicar Pais~~
+~~* Agregar Moneda~~
+~~* Indicar Precio de Dolar~~
 
+Guardar estos datos y mostrar:
 
-###Pantalla de Datos
+###Pantalla de Dashboard
 
 Gastos del Mes hasta el dia de la fecha
 Lista de ultimos gastos
 
 Botones Agregar Cuenta
 Agregar Registro
+
+
+Acciones a guardar:
+Nuevo registro
+Nueva cuenta
+Mostar datos
 
 

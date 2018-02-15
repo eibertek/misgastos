@@ -19,6 +19,10 @@ class FirstTime extends React.Component {
     this.setState(data);
    };
 
+  changeInput = (evt) => {
+    this.setState({ dolar: evt.target.value });
+  }
+
   persistData = () => {
     this.props.saveFirstTime(this.state);
     this.props.closePopup();
@@ -34,6 +38,9 @@ class FirstTime extends React.Component {
           </button>
         </div>
         <CountrySelect saveData={this.saveData}/>
+        <div style={{ paddingLeft: '20px', marginBottom: '10px'  }}>
+          Tipo de cambio: <input placeholder="tipo de cambio dolar" onChange={this.changeInput} />
+        </div>
         <button  type="button"onClick={this.persistData} className='btn btn-primary' >OK</button>
       </div>
     </div>;
