@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { getData } from '../../service';
 
 class CountrySelect extends React.Component {
@@ -8,36 +9,27 @@ class CountrySelect extends React.Component {
       this.state = {
           countries: [],
           currencies:[{name:'Select one Country'}],
-          defaultCountry: null,
-          defaultCurrency: null,
+          country: null,
       };
   }
 
   onChangeCountry = (evt) => {
     const countryData = this.state.countries[evt.target.value];
-    this.setState({
-      defaultCountry: countryData,
-      defaultCurrency: countryData.currencies[0],
-      currencies: countryData.currencies});
-    this.saveData(countryData, countryData.currencies[0]);
+    this.setState({ currencies: countryData.currencies });
+    this.props.saveData({ country: countryData, currency: countryData.currencies[0] });
  }
 
   onChangeCurrency = (evt) => {
-    this.setState({
-      defaultCurrency: this.state.currencies[evt.target.value]});
-    this.saveData(this.state.defaultCountry, this.state.currencies[evt.target.value]);
+    this.props.saveData({currency: this.state.currencies[evt.target.value]});
   }
 
   componentDidMount() {
     getData().then((data)=>{
-        this.setState({ countries: data, });
-    });
-  }
-
-  saveData = (country, currency) => {
-    this.props.saveData({
-      country,
-      currency
+        this.setState({ countries: data });
+        this.props.saveData({
+          country: data[0],
+          currency: data[0].currencies[0],
+        });
     });
   }
 
@@ -63,6 +55,11 @@ class CountrySelect extends React.Component {
         </div>
     </Fragment>;
   }
+}
+
+CountrySelect.contextTypes = {
+  country: PropTypes.object,
+  currency: PropTypes.object
 }
 
 export default CountrySelect;

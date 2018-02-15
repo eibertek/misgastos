@@ -1,5 +1,6 @@
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import CountrySelect from "../countries";
 import './styles.scss';
 
@@ -8,18 +9,21 @@ class FirstTime extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      country: null,
+      currency:null,
+    };
   }
-
-  componentDidMount() {};
 
   saveData = (data) => {
-    this.setState({ data });
-    };
+    this.setState(data);
+   };
 
   persistData = () => {
-    return this.props.saveFirstTime(this.state.data);
+    this.props.saveFirstTime(this.state);
+    this.props.closePopup();
   }
+
   render() {
     return <div>
       <div className="modal-content">
