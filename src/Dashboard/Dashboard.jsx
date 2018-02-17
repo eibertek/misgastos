@@ -3,6 +3,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import RegistriesList from "../registries/components/registriesList.jsx";
 import './styles.scss';
+import RegistriesComponent from "../registries/components/registries.jsx";
 
 const getAccount = (item) => {
   const accounts = ['123456', '321456', '15642', '000000'];
@@ -58,6 +59,9 @@ class Dashboard extends Component {
       <h1>Dashboard de finanzas</h1>
       <div className="RegistriesList">
         <RegistriesList isTable={true} rows={this.state.registries}/>
+      </div>
+      <div>Agregar Registro:
+      <RegistriesComponent canModify={true}/>
       </div>
     </div>
   }
