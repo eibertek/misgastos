@@ -31,7 +31,7 @@ const mockRegistry = ({ date, account, name, debit, credit, dolar }) => {
   }
 }
 
-const mockRegistries = (ammount) => {
+const mockRegistries = (ammount, dolar) => {
   let results = [];
   for(let i=0; i < ammount; i++) {
     results.push(mockRegistry({
@@ -40,7 +40,7 @@ const mockRegistries = (ammount) => {
       name: getName(),
       debit: 10.34,
       credit: 0.00,
-      dolar: 20.36,
+      dolar: parseFloat(dolar, 2),
     }));
   }
   return results;
@@ -50,18 +50,20 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      registries:  mockRegistries(3)
+      registries:  mockRegistries(3, this.props.dolar)
     }
   }
 
   render() {
     return <div>
       <h1>Dashboard de finanzas</h1>
+      <h5>Pais: {this.props.country.name}</h5>
+      <h5>Moneda: {this.props.currency.name} ({this.props.currency.symbol})</h5>
       <div className="RegistriesList">
         <RegistriesList isTable={true} rows={this.state.registries}/>
       </div>
       <div>Agregar Registro:
-      <RegistriesComponent canModify={true}/>
+      <RegistriesComponent canModify={true} dolar={this.props.dolar}/>
       </div>
     </div>
   }

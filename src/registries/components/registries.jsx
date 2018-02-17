@@ -14,7 +14,7 @@ class RegistriesComponent extends Component {
       debit: 0.00,
       credit: 0.00,
       balance: 0.00,
-      dolar: 0.00,
+      dolar: this.props.dolar || 0.00,
     }
   }
 
@@ -65,7 +65,7 @@ class RegistriesComponent extends Component {
         <input type="number" name="credit" onChange={this.onChangeValue} placeholder="credit"/>
       </div>
       <div className="registry">
-        <input type="number" name="dolar" onChange={this.onChangeValue} placeholder="dolar"/>
+        <input type="number" name="dolar" defaultValue={this.state.dolar} onChange={this.onChangeValue} placeholder="dolar"/>
       </div>
       <button className="registry btn btn-md">Guardar</button>
     </div>;
