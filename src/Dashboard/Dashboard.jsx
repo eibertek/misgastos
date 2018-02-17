@@ -60,11 +60,14 @@ class Dashboard extends Component {
       <h5>Pais: {this.props.country.name}</h5>
       <h5>Moneda: {this.props.currency.name} ({this.props.currency.symbol})</h5>
       <div className="RegistriesList">
+        <button>Editar Registros</button>
         <RegistriesList isTable={true} rows={this.state.registries}/>
       </div>
       <div>Agregar Registro:
       <RegistriesComponent canModify={true} dolar={this.props.dolar}/>
       </div>
+      <div>Ver cuentas </div>
+      <div>Nueva cuenta </div>
     </div>
   }
 }

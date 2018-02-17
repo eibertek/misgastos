@@ -39,7 +39,7 @@ class FirstTime extends React.Component {
         </div>
         <CountrySelect saveData={this.saveData}/>
         <div style={{ paddingLeft: '20px', marginBottom: '10px'  }}>
-          Tipo de cambio: <input placeholder="tipo de cambio dolar" onChange={this.changeInput} />
+          Tipo de cambio: <input placeholder="tipo de cambio dolar" defaultValue={20.36} onChange={this.changeInput} />
         </div>
         <button  type="button"onClick={this.persistData} className='btn btn-primary' >OK</button>
       </div>
