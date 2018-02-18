@@ -1,5 +1,27 @@
-Proyecto control de gastos
+#Proyecto control de gastos
+###Tareas Pendientes:
+####Cuentas
+* Boton Nueva Cuenta: conectado al store mediante una saga
+* Boton Editar Datos:
+  * Boton Editar Debe aparecer un boton lapiz al lado de cada registro
+  * Boton Borrar Debe aparecer un boton cesto al lado de cada registro
+  
+Se podria hacer un componente heredable que permita mostrar los controles y le pase cada accion.
+  
+####Registros
+* Boton Nueva Registro
+* Boton Editar
+* Boton Borrar
 
+####Pasar los datos delmock al store y traer los mismos al ingresar despues del FirstTIme Setup
+
+###monedas
+Crear componente para agregar monedas
+Permitir elegir la moneda por cuenta.
+cambiar el tipo de cambio por Moneda
+Boton para cambio rapido de moneda
+
+```
 Modelo de datos:
 
 Cuentas
@@ -37,7 +59,7 @@ Cuentas
  | Pais
  | PrecioDolar
 
-
+```
 - Crear pagina principal
 - Crear RegistroNuevaCuenta
 - Crear RegistroNuevaMoneda
