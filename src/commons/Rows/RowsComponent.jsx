@@ -16,6 +16,7 @@ class RowsComponent extends Component {
     cells: PropTypes.object,
     onChange: PropTypes.func,
     formData: PropTypes.array,
+    onSave: PropTypes.func,
   }
 
   renderRow = () => {
@@ -27,16 +28,18 @@ class RowsComponent extends Component {
 
   renderInput = ({ type, name, onChange, placeholder, defaultValue }) => {
     const onChangeFn = onChange || this.props.onChange;
-    const defValue = type==='date' ? Moment(defaultValue, 'DD/MM/YYYY').format('YYYY-MM-DD'): defaultValue;
+    const defValue = (type==='date' && defaultValue ? Moment(defaultValue, 'DD/MM/YYYY').format('YYYY-MM-DD'): defaultValue) || '';
     return <div className="registry">
-      <input type={type} name={name} onChange={onChangeFn} placeholder={placeholder} value={defValue} defaultValue={defValue}/>
+      <input type={type} name={name} onChange={onChangeFn} placeholder={placeholder} defaultValue={defValue}/>
     </div>;
   }
 
   renderForm = () => {
     return <div className="form-group">
-      {this.props.formData.map(field => this.renderInput(field))}
-      <button className="registry btn btn-md">Guardar</button>
+      {this.props.formData.map(field => {
+        return this.renderInput(field);
+      })}
+      <button onClick={this.props.onSave} className="registry btn btn-md">Guardar</button>
     </div>;
   }
 

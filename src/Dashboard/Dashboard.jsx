@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import RegistriesList from '../registries/components/registriesList.jsx';
 import AccountsList from '../accounts/components/accountsList.jsx';
 import './styles.scss';
-import RegistriesComponent from '../registries/components/registries.jsx';
+import RegistriesComponent from '../registries/components/registries.container';
 import { mockRegistries, mockAccounts } from './mocker';
 
 class Dashboard extends Component {
@@ -13,6 +13,10 @@ class Dashboard extends Component {
       registries:  mockRegistries(3, this.props.dolar),
       accounts: mockAccounts(3),
     }
+  }
+
+  componentWillReceiveProps = (newProps) => {
+    this.setState({registries: newProps.registries.toJS()});
   }
 
   render() {

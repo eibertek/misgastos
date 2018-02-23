@@ -3,7 +3,6 @@ export default (state={},action)=>{
     case 'SET_FIRST_TIME_COUNTRY_CURRENCY':
       return Object.assign(state, {}, { country: action.country, currency: action.currency, dolar: action.dolar });
     case 'SAVE_DATA':
-      console.log(action);
       return Object.assign(state, {}, { dataPassed: action.data });
     default:
       return state;

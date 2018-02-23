@@ -8,6 +8,7 @@ const mapsProps = (state) => {
     country: selectors.countrySelector(state),
     currency: selectors.currencySelector(state),
     dolar: selectors.dolarSelector(state),
+    registries: selectors.getRegistries(state)
   }
 }
 

@@ -35,9 +35,11 @@ class RegistriesComponent extends Component {
     credit: PropTypes.number,
     balance: PropTypes.number,
     dolar: PropTypes.number,
+    setNewRegistry: PropTypes.func,
   }
 
   onChange = evt => this.setState({[evt.target.name]: evt.target.value});
+  saveData = () => this.props.setNewRegistry(this.state);
 
   render(){
     const { id, description, balance, ...cells} = this.state;
@@ -48,6 +50,7 @@ class RegistriesComponent extends Component {
       onChange={this.onChange}
       cells={cells}
       formData={formData}
+      onSave={this.saveData}
     />;
   }
 }

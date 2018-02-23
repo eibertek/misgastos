@@ -3,14 +3,15 @@ import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga'
 import initialStore from './initialStore';
 import reducers from '../countries/components/CountrySelect/Reducers';
+import RegistriesReducer from '../registries/reducers';
 import SetupReducers from '../FirstTime/reducers/FirstTime.reducer';
-import rootSaga from '../FirstTime/sagas/firstTime.saga';
+import rootSaga from './rootSaga';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  combineReducers({reducers, userSetup: SetupReducers}),
+  combineReducers({userSetup: SetupReducers, registries: RegistriesReducer}),
   initialStore,
   composeEnhancers(applyMiddleware(thunk,sagaMiddleware))
   );

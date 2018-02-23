@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 
 const firstTimeData = state => state.userSetup;
+const getRegistries = state => state.registries;
 
 const countrySelector = createSelector(
   firstTimeData,
@@ -20,5 +21,6 @@ const dolarSelector = createSelector(
 export default {
   countrySelector,
   currencySelector,
-  dolarSelector
+  dolarSelector,
+  getRegistries
 }
