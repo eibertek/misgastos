@@ -15,8 +15,22 @@ class Dashboard extends Component {
     }
   }
 
+  static propTypes = {
+    registries: PropTypes.object,
+    tableId: PropTypes.string,
+  }
+
   componentWillReceiveProps = (newProps) => {
-    this.setState({registries: newProps.registries.toJS()});
+    this.setState({registries: newProps.registries.toJS(), tableId: newProps.tableId});
+  }
+
+  toggleEdit = tableId => {
+    return this.props.toggleEditButtons(tableId);
+  }
+
+  renderStatus = (tableId) => {
+    console.log('tabledId:', tableId, 'TOGGLEE');
+    return this.props.editModes && this.props.editModes[tableId] ? 'btn-danger' : 'btn-info';
   }
 
   render() {
@@ -25,13 +39,14 @@ class Dashboard extends Component {
       <h5>Pais: {this.props.country.name}</h5>
       <h5>Moneda: {this.props.currency.name} ({this.props.currency.symbol})</h5>
       <div className="RegistriesList">
-        <button>Editar Registros</button>
-        <RegistriesList isTable={true} rows={this.state.registries}/>
+        <button className={"btn " + this.renderStatus('registries')} onClick={() => this.toggleEdit('registries')}>Editar Registros</button>
+        <RegistriesList isTable={true} tableId={this.state.tableId} rows={this.state.registries}/>
       </div>
       <div>Agregar Registro:
       <RegistriesComponent canModify={true} dolar={this.props.dolar}/>
       </div>
       <div>
+        <button className={"btn " + this.renderStatus('accounts')} onClick={() => this.toggleEdit('accounts')}>Editar Cuentas</button>
         <AccountsList isTable={true}
                          rows={this.state.accounts}
                          defaultCurrency={this.props.currency.symbol}

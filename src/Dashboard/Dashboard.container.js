@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Dashboard from './Dashboard.jsx';
-import actions from './actions/dashboard.actions';
+import { toggleEditButtons } from '../registries/actions/';
 import selectors from './selectors/dashboard.selector';
 
 const mapsProps = (state) => {
@@ -8,8 +9,15 @@ const mapsProps = (state) => {
     country: selectors.countrySelector(state),
     currency: selectors.currencySelector(state),
     dolar: selectors.dolarSelector(state),
-    registries: selectors.getRegistries(state)
+    registries: selectors.getRegistries(state),
+    editModes: selectors.getEditMode(state)
   }
 }
 
-export default connect(mapsProps,null)(Dashboard);
+const dispatchToProps = dispatch => {
+  return dispatch => ({
+    toggleEditButtons: bindActionCreators(toggleEditButtons, dispatch),
+  })
+};
+
+export default connect(mapsProps,dispatchToProps)(Dashboard);

@@ -1,5 +1,5 @@
 export const SETNEWREGISTRY = '[SAVE][REGISTRIES] Set new registry to the store';
-export const ENABLEEDITMODE = '[RUN][REGISTRIES] Change to edit mode for this tab';
+export const TOGGLEDITMODE = '[RUN][REGISTRIES] Change to edit mode for this tab';
 export const EDITREGISTRY = '[RUN][REGISTRIES] Change to edit mode for this registry';
 export const SAVEREGISTRY = '[SAVE][REGISTRIES] save registry';
 export const DELETEREGISTRY = '[DELETE][REGISTRIES] delete registry';
@@ -15,6 +15,12 @@ export const setNewRegistry = (registryData) =>
   }
 
 // Accion para habilitar botones de edicion
+export const toggleEditButtons = (tableId) => {
+  return {
+    type: TOGGLEDITMODE,
+    tableId
+  }
+};
 
 // Accion para habilitar edicion
 

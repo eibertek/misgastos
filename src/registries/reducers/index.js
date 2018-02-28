@@ -1,5 +1,5 @@
 import { List } from 'immutable';
-import {SETNEWREGISTRY, SAVEREGISTRY} from "../actions/index";
+import { SAVEREGISTRY } from "../actions/index";
 
 export default (state = new List([]), action) => {
   switch (action.type) {

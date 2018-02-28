@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import RegistryComponent from './registries.jsx';
-import { setNewRegistry, getRegistries } from '../actions';
+import { setNewRegistry } from '../actions';
 
 const mapDispatcher = (dispatch) => {
   return (dispatch) => ({

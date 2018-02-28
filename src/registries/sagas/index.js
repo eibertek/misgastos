@@ -1,8 +1,7 @@
-import { all, put, takeLatest } from 'redux-saga/effects'
+import { all, select, put, takeLatest, takeEvery } from 'redux-saga/effects'
 import {
   SETNEWREGISTRY,
-  GETREGISTRIES,
-  SAVEREGISTRY
+  SAVEREGISTRY,
 } from '../actions';
 
 
