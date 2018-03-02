@@ -6,7 +6,9 @@ import Moment from 'moment';
 class RowsComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      canModify: this.props.canModify || false,
+    };
   }
 
   static propTypes = {
@@ -17,12 +19,21 @@ class RowsComponent extends Component {
     onChange: PropTypes.func,
     formData: PropTypes.array,
     onSave: PropTypes.func,
+    editMode: PropTypes.bool,
+  }
+
+  toggleEdit = () => {
+    this.setState({ canModify: !this.state.canModify })
+    this.props.onSave();
   }
 
   renderRow = () => {
     const cells = Object.keys(this.props.cells);
     return <tr>
-      {this.props.canModify ? this.props.formData.map(cell => <td>{this.renderInput(cell)}</td>) : cells.map(cell => <td>{this.props.cells[cell]}</td>)}
+      {this.props.editMode ? <td>
+        <button onClick={this.toggleEdit}>[ E ]</button> | <button>[ D ]</button>
+      </td>: null}
+      {this.state.canModify ? this.props.formData.map(cell => <td>{this.renderInput(cell)}</td>) : cells.map(cell => <td>{this.props.cells[cell]}</td>)}
       </tr>;
   }
 
@@ -46,7 +57,7 @@ class RowsComponent extends Component {
   render(){
     if(this.props.render) return this.props.render();
     if(this.props.isRow) return this.renderRow();
-    if(this.props.canModify) return this.renderForm();
+    if(this.state.canModify) return this.renderForm();
     return <div>AA</div>;
   }
 }

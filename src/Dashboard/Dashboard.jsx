@@ -28,9 +28,12 @@ class Dashboard extends Component {
     return this.props.toggleEditButtons(tableId);
   }
 
+  editModeEnabled = (tableId) => {
+    return this.props.editModes && this.props.editModes[tableId];
+  }
+
   renderStatus = (tableId) => {
-    console.log('tabledId:', tableId, 'TOGGLEE');
-    return this.props.editModes && this.props.editModes[tableId] ? 'btn-danger' : 'btn-info';
+    return this.editModeEnabled(tableId) ? 'btn-danger' : 'btn-info';
   }
 
   render() {
@@ -40,7 +43,10 @@ class Dashboard extends Component {
       <h5>Moneda: {this.props.currency.name} ({this.props.currency.symbol})</h5>
       <div className="RegistriesList">
         <button className={"btn " + this.renderStatus('registries')} onClick={() => this.toggleEdit('registries')}>Editar Registros</button>
-        <RegistriesList isTable={true} tableId={this.state.tableId} rows={this.state.registries}/>
+        <RegistriesList isTable={true} tableId="registries"
+                        rows={this.state.registries}
+                        editMode={this.editModeEnabled('registries')}
+        />
       </div>
       <div>Agregar Registro:
       <RegistriesComponent canModify={true} dolar={this.props.dolar}/>

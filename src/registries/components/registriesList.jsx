@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import Registries from './registries.jsx';
+import Registries from './registries.container';
 import './styles.scss';
 
 class RegistriesListComponent extends Component {
@@ -12,6 +12,7 @@ class RegistriesListComponent extends Component {
   static propTypes = {
     rows: PropTypes.arrayOf(PropTypes.object),
     isTable: PropTypes.bool,
+    tableId: PropTypes.string,
   }
 
   renderTable(){
@@ -20,6 +21,7 @@ class RegistriesListComponent extends Component {
       <table className="table table-bordered table-hover">
         <thead>
           <tr>
+            {this.props.editMode ? <th>Actions</th>: null}
             <th>Date</th>
             <th>Account</th>
             <th>Name</th>
@@ -40,6 +42,7 @@ class RegistriesListComponent extends Component {
           isRow
           key={row.id}
           {...row}
+          editMode={this.props.editMode}
         />));
 
 

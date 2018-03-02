@@ -36,6 +36,7 @@ class RegistriesComponent extends Component {
     balance: PropTypes.number,
     dolar: PropTypes.number,
     setNewRegistry: PropTypes.func,
+    editMode: PropTypes.bool,
   }
 
   onChange = evt => this.setState({[evt.target.name]: evt.target.value});
@@ -51,6 +52,7 @@ class RegistriesComponent extends Component {
       cells={cells}
       formData={formData}
       onSave={this.saveData}
+      editMode={this.props.editMode}
     />;
   }
 }
