@@ -1,5 +1,5 @@
 export const SETNEWREGISTRY = '[SAVE][REGISTRIES] Set new registry to the store';
-export const TOGGLEDITMODE = '[RUN][REGISTRIES] Change to edit mode for this tab';
+export const TOGGLEDITMODE = '[RUN][TABLE][REGISTRIES] Change to edit mode';
 export const EDITREGISTRY = '[RUN][REGISTRIES] Change to edit mode for this registry';
 export const SAVEREGISTRY = '[SAVE][REGISTRIES] save registry';
 export const DELETEREGISTRY = '[DELETE][REGISTRIES] delete registry';

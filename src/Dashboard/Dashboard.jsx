@@ -10,7 +10,7 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      registries:  mockRegistries(3, this.props.dolar),
+      registries:  this.props.registries.toJS(),
       accounts: mockAccounts(3),
     }
   }

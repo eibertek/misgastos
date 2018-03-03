@@ -3,9 +3,9 @@ import uuidv4 from 'uuid/v4';
 
 const getAccount = (item) => {
   const accounts = ['123456', '321456', '15642', '000000',
-    parseInt(Math.random()*10000),
-    parseInt(Math.random()*10000),
-    parseInt(Math.random()*10000)];
+    parseInt(Math.random()*10000).toString(),
+    parseInt(Math.random()*10000).toString(),
+    parseInt(Math.random()*10000).toString()];
   const random = () => accounts[Math.floor(Math.random()*accounts.length)];
   if(item >= 0 ) return account[item];
   return random();
@@ -41,7 +41,7 @@ const mockRegistry = ({ date, account, name, debit, credit, dolar }) => {
     debit,
     credit,
     dolar,
-  }
+  };
 }
 
 const mockAccount = ({ name, entity, description, balance }) => {
@@ -55,16 +55,17 @@ const mockAccount = ({ name, entity, description, balance }) => {
 }
 
 export const mockRegistries = (ammount, dolar) => {
-  let results = [];
+  const results = [];
   for(let i=0; i < ammount; i++) {
-    results.push(mockRegistry({
+    const registry = mockRegistry({
       date: moment().format('DD/MM/YYYY'),
       account: getAccount(),
       name: getName(),
       debit: parseFloat(Math.random()*100).toFixed(2),
       credit: 0.00,
       dolar: parseFloat(dolar, 2),
-    }));
+    });
+    results.push(registry);
   }
   return results;
 }

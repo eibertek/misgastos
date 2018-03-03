@@ -1,8 +1,9 @@
-import { List } from 'immutable';
-
+import { fromJS } from 'immutable';
+import { mockRegistries } from '../Dashboard/mocker';
+const mockedData = fromJS(mockRegistries(3, 20.75));
 export default {
   userSetup: {},
-  registries: new List([]),
+  registries: mockedData,
   dashboard: {
     editMode: {
       registries: false,

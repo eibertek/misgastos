@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import uuidv4 from 'uuid/v4';
+import { fromJS } from 'immutable';
 import RowsComponent from '../../commons/Rows/RowsComponent.jsx';
 import formData from './formData';
 import './styles.scss';
@@ -42,11 +43,16 @@ class RegistriesComponent extends Component {
 
   onChange = evt => this.setState({[evt.target.name]: evt.target.value});
   saveData = () => {
-    this.props.setNewRegistry(this.state);
-    this.setState({ id: uuidv4() });
+    if(!this.props.editMode) {
+      this.setState({ id: uuidv4() });
+      this.props.setNewRegistry(fromJS(this.state));
+    }else{
+      this.props.editRegistry(this.state.id, this.state);
+    }
   }
 
   render(){
+    console.log('Se envia a renderear', this.state);
     const { id, description, balance, ...cells} = this.state;
     return <RowsComponent
       isRow={this.props.isRow}
