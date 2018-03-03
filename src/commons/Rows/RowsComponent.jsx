@@ -51,7 +51,7 @@ class RowsComponent extends Component {
   }
 
   componentWillReceiveProps(props) {
-    if(!props.editMode)
+    if(props.editMode===false)
       this.setState({ canModify: false });
   }
 
