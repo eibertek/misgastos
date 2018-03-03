@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import uuidv4 from 'uuid/v4';
 import RowsComponent from '../../commons/Rows/RowsComponent.jsx';
 import formData from './formData';
 import './styles.scss';
@@ -8,7 +9,7 @@ class RegistriesComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.id || null,
+      id: this.props.id || uuidv4(),
       date: this.props.date || null,
       account: this.props.account || null,
       name: this.props.name || null,
@@ -28,7 +29,7 @@ class RegistriesComponent extends Component {
     render: PropTypes.func,
     id: PropTypes.string,
     date: PropTypes.string,
-    account: PropTypes.string,
+    account: PropTypes.any,
     name: PropTypes.string,
     description: PropTypes.string,
     debit: PropTypes.number,
@@ -40,7 +41,10 @@ class RegistriesComponent extends Component {
   }
 
   onChange = evt => this.setState({[evt.target.name]: evt.target.value});
-  saveData = () => this.props.setNewRegistry(this.state);
+  saveData = () => {
+    this.props.setNewRegistry(this.state);
+    this.setState({ id: uuidv4() });
+  }
 
   render(){
     const { id, description, balance, ...cells} = this.state;

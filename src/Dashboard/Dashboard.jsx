@@ -54,8 +54,10 @@ class Dashboard extends Component {
       <div>
         <button className={"btn " + this.renderStatus('accounts')} onClick={() => this.toggleEdit('accounts')}>Editar Cuentas</button>
         <AccountsList isTable={true}
-                         rows={this.state.accounts}
-                         defaultCurrency={this.props.currency.symbol}
+                      tableId="accounts"
+                      rows={this.state.accounts}
+                      defaultCurrency={this.props.currency.symbol}
+                      editMode={this.editModeEnabled('accounts')}
         /> </div>
       <div>Nueva cuenta </div>
     </div>;

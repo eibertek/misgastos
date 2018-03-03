@@ -28,6 +28,7 @@ class AccountsComponent extends Component {
     currency: PropTypes.string,
     description: PropTypes.string,
     balance: PropTypes.number,
+    editMode: PropTypes.bool,
   }
 
   onChange = evt => this.setState({[evt.target.name]: evt.target.value});

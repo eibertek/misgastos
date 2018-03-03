@@ -1,4 +1,5 @@
 import moment from 'moment';
+import uuidv4 from 'uuid/v4';
 
 const getAccount = (item) => {
   const accounts = ['123456', '321456', '15642', '000000',
@@ -33,7 +34,7 @@ const getDescription = (item) => {
 
 const mockRegistry = ({ date, account, name, debit, credit, dolar }) => {
   return {
-    id: (Math.random()*1000).toString(),
+    id: uuidv4(),
     date,
     account,
     name,
@@ -45,7 +46,7 @@ const mockRegistry = ({ date, account, name, debit, credit, dolar }) => {
 
 const mockAccount = ({ name, entity, description, balance }) => {
   return {
-    id: (Math.random()*1000).toString(),
+    id: uuidv4(),
     name,
     entity,
     description,

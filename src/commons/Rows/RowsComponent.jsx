@@ -29,26 +29,29 @@ class RowsComponent extends Component {
 
   renderRow = () => {
     const cells = Object.keys(this.props.cells);
-    return <tr>
+    let item = 0;
+    return <tr key={item}>
       {this.props.editMode ? <td>
         <button onClick={this.toggleEdit}>[ E ]</button> | <button>[ D ]</button>
       </td>: null}
-      {this.state.canModify ? this.props.formData.map(cell => <td>{this.renderInput(cell)}</td>) : cells.map(cell => <td>{this.props.cells[cell]}</td>)}
+      {this.state.canModify ? this.props.formData.map(cell =>
+                                <td key={++item}>{this.renderInput(cell)}</td>) : cells.map(cell => <td key={++item}>{this.props.cells[cell]}</td>)}
       </tr>;
   }
 
-  renderInput = ({ type, name, onChange, placeholder, defaultValue }) => {
+  renderInput = (item, { type, name, onChange, placeholder, defaultValue }) => {
     const onChangeFn = onChange || this.props.onChange;
     const defValue = (type==='date' && defaultValue ? Moment(defaultValue, 'DD/MM/YYYY').format('YYYY-MM-DD'): defaultValue) || '';
-    return <div className="registry">
+    return <div key={item} className="registry">
       <input type={type} name={name} onChange={onChangeFn} placeholder={placeholder} defaultValue={defValue}/>
     </div>;
   }
 
   renderForm = () => {
+    let item = 0;
     return <div className="form-group">
       {this.props.formData.map(field => {
-        return this.renderInput(field);
+        return this.renderInput(++item, field);
       })}
       <button onClick={this.props.onSave} className="registry btn btn-md">Guardar</button>
     </div>;

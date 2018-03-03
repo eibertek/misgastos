@@ -7,6 +7,8 @@ class AccountsListComponent extends Component {
     rows: PropTypes.arrayOf(PropTypes.object),
     isTable: PropTypes.bool,
     defaultCurrency: PropTypes.string,
+    tableId: PropTypes.string,
+    editMode: PropTypes.bool,
   }
 
   renderTable(){
@@ -15,6 +17,7 @@ class AccountsListComponent extends Component {
       <table className="table table-bordered table-hover">
         <thead>
           <tr>
+            {this.props.editMode ? <th>Actions</th>: null}
             <th>Name</th>
             <th>Entity</th>
             <th>Description</th>

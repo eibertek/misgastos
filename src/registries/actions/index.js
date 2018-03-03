@@ -22,9 +22,15 @@ export const toggleEditButtons = (tableId) => {
   }
 };
 
-// Accion para habilitar edicion
-
 // Accion para editar
+export const editRegistry = (id, registryData) =>
+{
+  return {
+    type: EDITREGISTRY,
+    id,
+    registryData,
+  }
+}
 
 // Accion para borrar
 
