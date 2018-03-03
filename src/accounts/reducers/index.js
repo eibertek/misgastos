@@ -6,6 +6,7 @@ export default (state = new List([]), action) => {
     case SAVEACCOUNT:
       return state.push(action.accountData);
     case EDITACCOUNT:
+      console.log(action);
       const editIndex = state.findIndex(item => item.get('id') === action.id);
       const list = editIndex > -1 ? state.update(editIndex, () => {
         return action.accountData;
