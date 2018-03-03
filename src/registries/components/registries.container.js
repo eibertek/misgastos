@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import RegistryComponent from './registries.jsx';
 import { setNewRegistry, editRegistry, deleteRegistry } from '../actions';
 
-const mapDispatcher = (dispatch) => {
+const mapDispatcher = () => {
   return (dispatch) => ({
     setNewRegistry: bindActionCreators(setNewRegistry, dispatch),
     editRegistry: bindActionCreators(editRegistry, dispatch),

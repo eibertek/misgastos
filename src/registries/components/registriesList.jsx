@@ -13,6 +13,7 @@ class RegistriesListComponent extends Component {
     rows: PropTypes.arrayOf(PropTypes.object),
     isTable: PropTypes.bool,
     tableId: PropTypes.string,
+    editMode: PropTypes.bool,
   }
 
   renderTable(){

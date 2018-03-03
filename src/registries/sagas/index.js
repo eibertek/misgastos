@@ -13,7 +13,7 @@ function* runSaveData() {
   yield takeLatest(SETNEWREGISTRY, saveRegistryData);
 }
 
-export default function* rootSaga() {
+export default function* registriesSaga() {
   yield all([
     runSaveData(),
   ]);

@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import RegistryComponent from './registries.jsx';
-import { setNewRegistry, editRegistry, deleteRegistry } from '../actions';
+import AccountComponent from './accounts.jsx';
+import { setNewAccount, editAccount, deleteAccount } from '../actions';
 
-const mapDispatcher = (dispatch) => {
+const mapDispatcher = () => {
   return (dispatch) => ({
-    setNewRegistry: bindActionCreators(setNewRegistry, dispatch),
-    editRegistry: bindActionCreators(editRegistry, dispatch),
-    deleteRegistry: bindActionCreators(deleteRegistry, dispatch),
+    setNewAccount: bindActionCreators(setNewAccount, dispatch),
+    editAccount: bindActionCreators(editAccount, dispatch),
+    deleteAccount: bindActionCreators(deleteAccount, dispatch),
   });
 };
 
-export default connect(null,mapDispatcher)(RegistryComponent);
+export default connect(null,mapDispatcher)(AccountComponent);

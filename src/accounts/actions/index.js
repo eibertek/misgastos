@@ -6,11 +6,11 @@ export const DELETEACCOUNT = '[DELETE][ACCOUNTS] delete ACCOUNT';
 export const GETACCOUNTS = '[RUN][ACCOUNTS] get ACCOUNTS to store';
 
 // Accion para registrar nuevo registro
-export const setNewAccount = (ACCOUNTData) =>
+export const setNewAccount = (accountData) =>
   {
     return {
-      type: SETNEWACCOUNT,
-      ACCOUNTData
+      type: SAVEACCOUNT,
+      accountData
     }
   }
 
@@ -23,12 +23,12 @@ export const toggleEditButtons = (tableId) => {
 };
 
 // Accion para editar
-export const editAccount = (id, ACCOUNTData) =>
+export const editAccount = (id, accountData) =>
 {
   return {
     type: EDITACCOUNT,
     id,
-    ACCOUNTData,
+    accountData,
   }
 }
 

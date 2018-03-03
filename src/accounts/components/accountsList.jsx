@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import Accounts from './accounts.jsx';
+import Accounts from './accounts.container';
 
 class AccountsListComponent extends Component {
   static propTypes = {
@@ -38,6 +38,7 @@ class AccountsListComponent extends Component {
           key={row.id}
           {...row}
           currency={this.props.defaultCurrency}
+          editMode={this.props.editMode}
         />));
 
 

@@ -10,6 +10,7 @@ const mapsProps = (state) => {
     currency: selectors.currencySelector(state),
     dolar: selectors.dolarSelector(state),
     registries: selectors.getRegistries(state),
+    accounts: selectors.getAccounts(state),
     editModes: selectors.getEditMode(state)
   }
 }

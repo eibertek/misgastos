@@ -5,16 +5,16 @@ import {
 } from '../actions';
 
 
-function* saveRegistryData({registryData}) {
-  yield put({ type: SAVEACCOUNT, registryData });
+function* saveAccountData({accountData}) {
+  yield put({ type: SAVEACCOUNT, accountData });
 }
 
-function* runSaveData() {
-  yield takeLatest(SETNEWACCOUNT, saveRegistryData);
+function* runSaveAccountData() {
+  yield takeLatest(SETNEWACCOUNT, saveAccountData);
 }
 
-export default function* rootSaga() {
+export default function* accountSaga() {
   yield all([
-    runSaveData(),
+    runSaveAccountData(),
   ]);
 }

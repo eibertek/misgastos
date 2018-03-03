@@ -4,14 +4,14 @@ import RegistriesList from '../registries/components/registriesList.jsx';
 import AccountsList from '../accounts/components/accountsList.jsx';
 import './styles.scss';
 import RegistriesComponent from '../registries/components/registries.container';
-import { mockRegistries, mockAccounts } from './mocker';
+import AccountsComponent from "../accounts/components/accounts.container";
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       registries:  this.props.registries.toJS(),
-      accounts: mockAccounts(3),
+      accounts: this.props.accounts.toJS(),
     }
   }
 
@@ -21,7 +21,7 @@ class Dashboard extends Component {
   }
 
   componentWillReceiveProps = (newProps) => {
-    this.setState({registries: newProps.registries.toJS(), tableId: newProps.tableId});
+    this.setState({registries: newProps.registries.toJS(), accounts: newProps.accounts.toJS(), tableId: newProps.tableId});
   }
 
   toggleEdit = tableId => {
@@ -61,6 +61,7 @@ class Dashboard extends Component {
                       editMode={this.editModeEnabled('accounts')}
         /> </div>
       <div>Nueva cuenta </div>
+      <AccountsComponent canModify={true} currency={this.props.currency.symbol}/>
     </div>;
   }
 }
