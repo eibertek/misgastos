@@ -24,11 +24,11 @@ class RowsComponent extends Component {
     formData: PropTypes.array,
     onSave: PropTypes.func,
     editMode: PropTypes.bool,
+    onDelete: PropTypes.func,
   }
 
   toggleEdit = (persist) => {
     return evt => {
-      console.log('ver error aca', this.props);
       this.setState({ canModify: !this.state.canModify });
       if(persist) this.props.onSave();
     }
@@ -36,9 +36,18 @@ class RowsComponent extends Component {
 
   renderButtons = () => {
     if(this.state.canModify) {
-      return <button onClick={this.toggleEdit(true)} name="savebtn" className="btn btn-sm"><FontAwesomeIcon icon={faSave}/></button>
+      return <button onClick={this.toggleEdit(true)} name="savebtn" className="btn btn-sm">
+                    <FontAwesomeIcon icon={faSave}/>
+      </button>;
     }
-    return <Fragment><button className="btn btn-sm" name="editbtn" onClick={this.toggleEdit(false)}><FontAwesomeIcon icon={faEdit}/></button> | <button className="btn btn-sm" ><FontAwesomeIcon icon={faRecycle}/></button></Fragment>;
+    return <Fragment>
+              <button className="btn btn-sm" name="editbtn" onClick={this.toggleEdit(false)}>
+                  <FontAwesomeIcon icon={faEdit}/>
+              </button> |
+              <button className="btn btn-sm" onClick={this.props.onDelete}>
+                <FontAwesomeIcon icon={faRecycle}/>
+              </button>
+    </Fragment>;
   }
 
   componentWillReceiveProps(props) {
@@ -58,8 +67,10 @@ class RowsComponent extends Component {
       </tr>;
   }
 
-  renderInput = ({ type, name, onChange, placeholder, defaultValue }) => {
-    const onChangeFn = onChange || this.props.onChange;
+  renderInput = (values) => {
+    const { type, name, placeholder } = values;
+    const onChangeFn = type==='date' ? this.props.onChangeDate : this.props.onChange;
+    const defaultValue = this.props.cells[name];
     const defValue = (type==='date' && defaultValue ? Moment(defaultValue, 'DD/MM/YYYY').format('YYYY-MM-DD'): defaultValue) || '';
     return <input type={type} name={name} onChange={onChangeFn} placeholder={placeholder} defaultValue={defValue}/>;
   }

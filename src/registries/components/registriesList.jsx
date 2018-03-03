@@ -38,12 +38,14 @@ class RegistriesListComponent extends Component {
   }
 
   renderRows = (isRow) => (this.props.rows.map(row =>
-        <Registries
-          isRow
-          key={row.id}
-          {...row}
-          editMode={this.props.editMode}
-        />));
+  {
+    return <Registries
+      isRow
+      key={row.id}
+      {...row}
+      editMode={this.props.editMode}
+    />
+  }));
 
 
   render = () => this.props.isTable ?

@@ -43,7 +43,8 @@ class Dashboard extends Component {
       <h5>Moneda: {this.props.currency.name} ({this.props.currency.symbol})</h5>
       <div className="RegistriesList">
         <button className={"btn " + this.renderStatus('registries')} onClick={() => this.toggleEdit('registries')}>Editar Registros</button>
-        <RegistriesList isTable={true} tableId="registries"
+        <RegistriesList isTable={true}
+                        tableId="registries"
                         rows={this.state.registries}
                         editMode={this.editModeEnabled('registries')}
         />

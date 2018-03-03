@@ -33,7 +33,13 @@ export const editRegistry = (id, registryData) =>
 }
 
 // Accion para borrar
-
+export const deleteRegistry = (id) =>
+{
+  return {
+    type: DELETEREGISTRY,
+    id,
+  }
+}
 // Accion para traer registros
 export const getRegistries = () => ({
   type: GETREGISTRIES

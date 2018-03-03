@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import { mockRegistries } from '../Dashboard/mocker';
-const mockedData = fromJS(mockRegistries(3, 20.75));
+const mockedData = fromJS(mockRegistries(5, 20));
 export default {
   userSetup: {},
   registries: mockedData,
