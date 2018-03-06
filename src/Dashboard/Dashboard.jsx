@@ -2,9 +2,13 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import RegistriesList from '../registries/components/registriesList.jsx';
 import AccountsList from '../accounts/components/accountsList.jsx';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faCog from '@fortawesome/fontawesome-free-solid/faCog';
+import 'react-tabs/style/react-tabs.scss';
 import './styles.scss';
 import RegistriesComponent from '../registries/components/registries.container';
 import AccountsComponent from "../accounts/components/accounts.container";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -38,30 +42,46 @@ class Dashboard extends Component {
 
   render() {
     return <div>
-      <h1>Dashboard de finanzas</h1>
-      <h5>Pais: {this.props.country.name}</h5>
-      <h5>Moneda: {this.props.currency.name} ({this.props.currency.symbol})</h5>
-      <div className="RegistriesList">
-        <button className={"btn " + this.renderStatus('registries')} onClick={() => this.toggleEdit('registries')}>Editar Registros</button>
-        <RegistriesList isTable={true}
-                        tableId="registries"
-                        rows={this.state.registries}
-                        editMode={this.editModeEnabled('registries')}
-        />
+      <div class="float-left">
+        <h1>Dashboard de finanzas</h1>
+        <h5>Pais: {this.props.country.name}</h5>
+        <h5>Moneda: {this.props.currency.name} ({this.props.currency.symbol})</h5>
       </div>
-      <div>Agregar Registro:
-      <RegistriesComponent canModify={true} dolar={this.props.dolar}/>
+      <div class="float-right settingsIcon">
+        <FontAwesomeIcon icon={faCog}/>
       </div>
-      <div>
-        <button className={"btn " + this.renderStatus('accounts')} onClick={() => this.toggleEdit('accounts')}>Editar Cuentas</button>
-        <AccountsList isTable={true}
-                      tableId="accounts"
-                      rows={this.state.accounts}
-                      defaultCurrency={this.props.currency.symbol}
-                      editMode={this.editModeEnabled('accounts')}
-        /> </div>
-      <div>Nueva cuenta </div>
-      <AccountsComponent canModify={true} currency={this.props.currency.symbol}/>
+      <div class="clearfix"></div>
+      <Tabs>
+        <TabList>
+          <Tab>Registros</Tab>
+          <Tab>Cuentas</Tab>
+        </TabList>
+        <TabPanel>
+          <div className="RegistriesList">
+            <button className={"btn " + this.renderStatus('registries')} onClick={() => this.toggleEdit('registries')}>Editar Registros</button>
+            <RegistriesList isTable={true}
+                            tableId="registries"
+                            rows={this.state.registries}
+                            editMode={this.editModeEnabled('registries')}
+            />
+          </div>
+          <div>Agregar Registro:
+            <RegistriesComponent canModify={true} dolar={this.props.dolar}/>
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div>
+            <button className={"btn " + this.renderStatus('accounts')} onClick={() => this.toggleEdit('accounts')}>Editar Cuentas</button>
+            <AccountsList isTable={true}
+                          tableId="accounts"
+                          rows={this.state.accounts}
+                          defaultCurrency={this.props.currency.symbol}
+                          editMode={this.editModeEnabled('accounts')}
+            /> </div>
+          <div>Nueva cuenta </div>
+          <AccountsComponent canModify={true} currency={this.props.currency.symbol}/>
+        </TabPanel>
+      </Tabs>
     </div>;
   }
 }
