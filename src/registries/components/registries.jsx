@@ -39,6 +39,7 @@ class RegistriesComponent extends Component {
     setNewRegistry: PropTypes.func,
     deleteRegistry: PropTypes.func,
     editMode: PropTypes.bool,
+    accounts: PropTypes.object,
   }
 
   onChange = evt => this.setState({[evt.target.name]: evt.target.value});
@@ -88,6 +89,8 @@ class RegistriesComponent extends Component {
       onSave={this.saveData}
       onDelete={this.deleteData}
       editMode={this.props.editMode}
+      accounts={this.props.accounts}
+      onChangeSelect={this.onChange}
     />;
   }
 }

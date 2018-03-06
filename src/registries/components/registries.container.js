@@ -2,6 +2,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import RegistryComponent from './registries.jsx';
 import { setNewRegistry, editRegistry, deleteRegistry } from '../actions';
+import selectors from '../../Dashboard/selectors/dashboard.selector';
+
+const mapStateToProps = (state) => ({
+  accounts: selectors.getAccounts(state),
+});
 
 const mapDispatcher = () => {
   return (dispatch) => ({
@@ -11,4 +16,4 @@ const mapDispatcher = () => {
   });
 };
 
-export default connect(null,mapDispatcher)(RegistryComponent);
+export default connect(mapStateToProps,mapDispatcher)(RegistryComponent);

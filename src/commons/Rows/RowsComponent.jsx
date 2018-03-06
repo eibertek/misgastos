@@ -25,6 +25,7 @@ class RowsComponent extends Component {
     onSave: PropTypes.func,
     editMode: PropTypes.bool,
     onDelete: PropTypes.func,
+    accounts: PropTypes.object,
   }
 
   toggleEdit = (persist) => {
@@ -55,6 +56,16 @@ class RowsComponent extends Component {
       this.setState({ canModify: false });
   }
 
+  renderTD = (cell) => {
+    if(cell === 'account') {
+      const celldata = this.props.accounts.find(account => account.get('id') === this.props.cells[cell]);
+      if(celldata) {
+        return <td>{celldata.get('name')}</td>;
+      }
+    }
+    return <td>{this.props.cells[cell]}</td>;
+  }
+
   renderRow = () => {
     const cells = Object.keys(this.props.cells);
     let item = 0;
@@ -63,16 +74,23 @@ class RowsComponent extends Component {
         {this.renderButtons()}
       </td>: null}
       {this.state.canModify ? this.props.formData.map(cell =>
-                                <td key={++item}>{this.renderInput(cell)}</td>) : cells.map(cell => <td key={++item}>{this.props.cells[cell]}</td>)}
+                                <td key={++item}>{this.renderInput(cell)}</td>) : cells.map(cell => this.renderTD(cell))}
       </tr>;
   }
 
   renderInput = (values) => {
     const { type, name, placeholder } = values;
+    if(name==='account') return this.renderAccounts();
     const onChangeFn = type==='date' ? this.props.onChangeDate : this.props.onChange;
     const defaultValue = this.props.cells[name];
     const defValue = (type==='date' && defaultValue ? Moment(defaultValue, 'DD/MM/YYYY').format('YYYY-MM-DD'): defaultValue) || '';
     return <input type={type} name={name} onChange={onChangeFn} placeholder={placeholder} defaultValue={defValue}/>;
+  }
+
+  renderAccounts = () => {
+    return <select name='account' onChange={this.props.onChangeSelect} value={this.props.cells['account']}>
+      {this.props.accounts.map(account => <option key={account.get('id')} value={account.get('id')}>{account.get('name')}</option>)};
+    </select>
   }
 
   renderForm = () => {

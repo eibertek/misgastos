@@ -56,13 +56,14 @@ class AccountsComponent extends Component {
   }
 
   componentWillReceiveProps(props) {
+    console.log(props);
     this.setState({
       id: props.id || uuidv4(),
-      name: this.props.name || null,
-      entity: this.props.entity || null,
-      description: this.props.description || null,
-      balance: this.props.balance || 0.00,
-      currency: this.props.currency || null,
+      name: props.name || null,
+      entity: props.entity || null,
+      description: props.description || null,
+      balance: props.balance || 0.00,
+      currency: props.currency || null,
     })
   }
 
