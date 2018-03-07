@@ -13,6 +13,11 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve('./', 'dist')
   },
+  resolve: {
+    alias: {
+      src: path.resolve('./', 'src/'),
+    },
+  },
   devtool: "source-map",
   module: {
     loaders: [

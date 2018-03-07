@@ -5,7 +5,7 @@ import Modal from 'react-responsive-modal';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faCog from '@fortawesome/fontawesome-free-solid/faCog';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import CountrySelect from "../../countries";
+import CountrySelect from "src/countries";
 
 
 class Settings extends React.Component {
@@ -48,6 +48,7 @@ class Settings extends React.Component {
             </TabList>
             <TabPanel>
               Generales
+              <CountrySelect />
             </TabPanel>
             <TabPanel>
               Moneda por default <br/>
