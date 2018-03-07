@@ -2,8 +2,6 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import RegistriesList from '../registries/components/registriesList.jsx';
 import AccountsList from '../accounts/components/accountsList.jsx';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faCog from '@fortawesome/fontawesome-free-solid/faCog';
 import 'react-tabs/style/react-tabs.scss';
 import './styles.scss';
 import RegistriesComponent from '../registries/components/registries.container';
@@ -42,15 +40,12 @@ class Dashboard extends Component {
 
   render() {
     return <div>
-      <div class="float-left">
+      <div className="float-left">
         <h1>Dashboard de finanzas</h1>
         <h5>Pais: {this.props.country.name}</h5>
         <h5>Moneda: {this.props.currency.name} ({this.props.currency.symbol})</h5>
       </div>
-      <div class="float-right settingsIcon">
-        <FontAwesomeIcon icon={faCog}/>
-      </div>
-      <div class="clearfix"></div>
+      <div className="clearfix"></div>
       <Tabs>
         <TabList>
           <Tab>Registros</Tab>

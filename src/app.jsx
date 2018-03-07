@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Moment from 'moment';
 import PropTypes from 'prop-types';
 import FirstTimeComponent from './FirstTime/';
 import Dashboard from './Dashboard/';
+import Settings from './Settings';
 
 export default class App extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ export default class App extends Component {
     this.state = {
       time: new Moment(),
       firstTime:true,
+      settings: false,
     };
   }
 
@@ -24,13 +26,19 @@ export default class App extends Component {
 
   togglePopup = () => this.setState({firstTime: false });
 
+  toggleSettings = () => this.setState({settings: !this.state.settings });
+
   componentDidCatch(error) {
     this.setState({ error });
   }
 
   render() {
     if(this.state.error) return <div>OCURRIO UN ERROR</div>;
-    return this.state.firstTime ? <FirstTimeComponent closePopup={this.togglePopup}></FirstTimeComponent> : <Dashboard />;
+    return this.state.firstTime ? <FirstTimeComponent closePopup={this.togglePopup}></FirstTimeComponent> :
+      <Fragment>
+        <Settings />
+        <Dashboard  openSettings={this.toggleSettings}/>
+      </Fragment>;
   }
 }
 
