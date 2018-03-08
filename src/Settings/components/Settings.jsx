@@ -5,7 +5,8 @@ import Modal from 'react-responsive-modal';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faCog from '@fortawesome/fontawesome-free-solid/faCog';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import CountrySelect from "src/countries";
+import CountrySelect from 'src/countries';
+import '../styles.scss';
 
 
 class Settings extends React.Component {
@@ -38,10 +39,10 @@ class Settings extends React.Component {
       <div className="float-right settingsIcon">
         <div onClick={this.handleShow}><FontAwesomeIcon icon={faCog}/></div>
       </div>
-        <Modal open={this.state.show} onClose={this.handleClose}>
+        <Modal classNames={{modal:'settings'}} little open={this.state.show} onClose={this.handleClose}>
           <h5>Settings</h5>
           <hr/>
-          <Tabs>
+          <Tabs className="tabs">
             <TabList>
               <Tab>General</Tab>
               <Tab>Monedas</Tab>
