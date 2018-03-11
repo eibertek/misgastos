@@ -5,7 +5,7 @@ import AccountsList from '../accounts/components/accountsList.jsx';
 import 'react-tabs/style/react-tabs.scss';
 import './styles.scss';
 import RegistriesComponent from '../registries/components/registries.container';
-import AccountsComponent from "../accounts/components/accounts.container";
+import AccountsComponent from '../accounts/components/accounts.container';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 class Dashboard extends Component {
@@ -14,7 +14,7 @@ class Dashboard extends Component {
     this.state = {
       registries:  this.props.registries.toJS(),
       accounts: this.props.accounts.toJS(),
-    }
+    };
   }
 
   static propTypes = {
@@ -23,6 +23,7 @@ class Dashboard extends Component {
   }
 
   componentWillReceiveProps = (newProps) => {
+    console.log('render de nuevo', newProps);
     this.setState({registries: newProps.registries.toJS(), accounts: newProps.accounts.toJS(), tableId: newProps.tableId});
   }
 
@@ -39,6 +40,7 @@ class Dashboard extends Component {
   }
 
   render() {
+    console.log('render again');
     return <div>
       <div className="float-left">
         <h1>Dashboard de finanzas</h1>

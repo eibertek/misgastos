@@ -28,10 +28,13 @@ class Settings extends React.Component {
   handleShow = () => {
     this.setState({ show: true });
   }
+  onSaveCountry = (data) => {
+    this.setState({country: data.country});
+  }
 
   persistData = () => {
     this.handleClose();
-    this.props.closePopup();
+    this.props.saveCountry({country: this.state.country});
   }
 
   render() {
@@ -49,14 +52,14 @@ class Settings extends React.Component {
             </TabList>
             <TabPanel>
               Generales
-              <CountrySelect />
+              <CountrySelect saveData={this.onSaveCountry} renderCurrency={false} />
             </TabPanel>
             <TabPanel>
               Moneda por default <br/>
               Crear nueva Moneda <br/>
             </TabPanel>
           </Tabs>
-          <button onClick={this.handleClose}>OK</button>
+          <button onClick={this.persistData}>OK</button>
         </Modal>
     </div>;
    }

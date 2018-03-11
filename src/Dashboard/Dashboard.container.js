@@ -18,7 +18,7 @@ const mapsProps = (state) => {
 const dispatchToProps = dispatch => {
   return dispatch => ({
     toggleEditButtons: bindActionCreators(toggleEditButtons, dispatch),
-  })
+  });
 };
 
 export default connect(mapsProps,dispatchToProps)(Dashboard);

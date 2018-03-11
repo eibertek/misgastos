@@ -10,7 +10,13 @@ class CountrySelect extends React.Component {
           countries: [],
           currencies:[{name:'Select one Country'}],
           country: null,
+          renderCurrency: !!this.props.renderCurrency,
       };
+  }
+
+  static defaultProps = {
+    saveData: () => {},
+    renderCurrency: true,
   }
 
   onChangeCountry = (evt) => {
@@ -38,7 +44,12 @@ class CountrySelect extends React.Component {
   }
 
   renderCurrencies() {
-     return this.state.currencies.map((currency, index) => <option key={index} value={index}>{currency.name}</option>)
+    if(this.state.renderCurrency === false ) return null;
+    return <div  className="ComponentSeparated">
+      <select className='currencies' onChange={this.onChangeCurrency}>
+        {this.state.currencies.map((currency, index) => <option key={index} value={index}>{currency.name}</option>)}
+      </select>
+    </div>;
   }
 
   render() {
@@ -48,11 +59,7 @@ class CountrySelect extends React.Component {
                 {this.renderCountries()}
             </select>
         </div>
-        <div  className="ComponentSeparated">
-            <select className='currencies' onChange={this.onChangeCurrency}>
-                {this.renderCurrencies()}
-            </select>
-        </div>
+        {this.renderCurrencies()}
     </Fragment>;
   }
 }

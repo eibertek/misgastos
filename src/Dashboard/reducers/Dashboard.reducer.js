@@ -1,4 +1,4 @@
-import { TOGGLEDITMODE } from '../../registries/actions';
+import { TOGGLEDITMODE } from 'src/registries/actions';
 
 export default (state={},action)=>{
   switch (action.type) {
