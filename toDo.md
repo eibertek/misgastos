@@ -89,4 +89,26 @@ Nuevo registro
 Nueva cuenta
 Mostar datos
 
+###TODO
+Settings
+
+Seleccion de moneda
+
+Code | Name | Symbol | Dolar | DateUpdated
+
+DEFAULT CURRENCY
+
+Tabla con monedas [Editar / Eliminar]
+[boton agregar moneda]
+
+Al agregar la cuenta o al modificar, que traiga una lista con las monedas y que aparezca la moneda default en negrita
+
+Una vez que la cuenta esta lista y funcionando. el siguiente paso es poner los subtotales y los totales en ambas tabs (registros y cuentas)
+
+Luego hacer la pantalla de ingreso de registros simple, que tenga solo:
+Cuenta
+Nombre
+Valor <--- si es positivo es debito, negativo es credito
+Valor del dolar <--- tiene que traer el valor de la cuenta, que a su vez lo trae de la moneda. 
+si la cuenta que se elige no tiene actualizado el valor para ese dia, mostrar mensaje en rojo
 
