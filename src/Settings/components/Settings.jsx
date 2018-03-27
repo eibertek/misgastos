@@ -7,6 +7,7 @@ import faCog from '@fortawesome/fontawesome-free-solid/faCog';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import CountrySelect from 'src/countries';
 import '../styles.scss';
+import CurrenciesListComponent from "src/currencies/components/currenciesList.jsx";
 
 
 class Settings extends React.Component {
@@ -56,7 +57,11 @@ class Settings extends React.Component {
             </TabPanel>
             <TabPanel>
               Moneda por default <br/>
-              Crear nueva Moneda <br/>
+              <CurrenciesListComponent
+              editMode={false}
+              tableId="currenciesSettings"
+              rows={this.props.store.currencies}
+              /> <br/>
             </TabPanel>
           </Tabs>
           <button onClick={this.persistData}>OK</button>

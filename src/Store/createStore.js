@@ -6,6 +6,7 @@ import RegistriesReducer from '../registries/reducers';
 import AccountReducer from '../accounts/reducers';
 import SetupReducers from '../FirstTime/reducers/FirstTime.reducer';
 import dashboardReducers from '../Dashboard/reducers/Dashboard.reducer';
+import currenciesReducer from 'src/currencies/reducers';
 import rootSaga from './rootSaga';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -17,6 +18,7 @@ const store = createStore(
     registries: RegistriesReducer,
     dashboard: dashboardReducers,
     accounts: AccountReducer,
+    currencies: currenciesReducer,
   }),
   initialStore,
   composeEnhancers(applyMiddleware(thunk,sagaMiddleware))

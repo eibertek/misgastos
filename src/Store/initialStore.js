@@ -6,10 +6,12 @@ export default {
   userSetup: {},
   registries: mockedData,
   accounts: mockedAccounts,
+  currencies: fromJS([]),
   dashboard: {
     editMode: {
       registries: false,
       accounts: false,
+      currencies: false,
     }
   },
 };

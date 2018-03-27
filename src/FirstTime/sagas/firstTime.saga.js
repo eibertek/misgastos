@@ -5,7 +5,6 @@ function* saveData({ country, currency, dolar }) {
 }
 
 function* saveFirstTime() {
-  console.log(action);
   yield takeLatest('SET_FIRST_TIME_COUNTRY_CURRENCY', saveData);
 }
 

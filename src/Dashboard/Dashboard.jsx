@@ -55,7 +55,7 @@ class Dashboard extends Component {
         </TabList>
         <TabPanel>
           <div className="RegistriesList">
-            <button className={"btn " + this.renderStatus('registries')} onClick={() => this.toggleEdit('registries')}>Editar Registros</button>
+            <button className={'btn ' + this.renderStatus('registries')} onClick={() => this.toggleEdit('registries')}>Editar Registros</button>
             <RegistriesList isTable={true}
                             tableId="registries"
                             rows={this.state.registries}
@@ -68,7 +68,7 @@ class Dashboard extends Component {
         </TabPanel>
         <TabPanel>
           <div>
-            <button className={"btn " + this.renderStatus('accounts')} onClick={() => this.toggleEdit('accounts')}>Editar Cuentas</button>
+            <button className={'btn ' + this.renderStatus('accounts')} onClick={() => this.toggleEdit('accounts')}>Editar Cuentas</button>
             <AccountsList isTable={true}
                           tableId="accounts"
                           rows={this.state.accounts}
