@@ -15,6 +15,7 @@ class CurrencyComponent extends Component {
       code: this.props.code || null,
       symbol: this.props.symbol || null,
       dolar: this.props.dolar || 0.00,
+      default: this.props.default || false,
       dateUpdated: this.props.dateUpdated || null,
     };
   }
@@ -28,6 +29,7 @@ class CurrencyComponent extends Component {
     code: PropTypes.string,
     symbol: PropTypes.string,
     dolar: PropTypes.number,
+    default: PropTypes.bool,
     dateUpdated: PropTypes.number,
     defaultCurrency: PropTypes.object,
     setNewCurrency: PropTypes.func,

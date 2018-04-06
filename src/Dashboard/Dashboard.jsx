@@ -23,7 +23,6 @@ class Dashboard extends Component {
   }
 
   componentWillReceiveProps = (newProps) => {
-    console.log('render de nuevo', newProps);
     this.setState({registries: newProps.registries.toJS(), accounts: newProps.accounts.toJS(), tableId: newProps.tableId});
   }
 
@@ -40,7 +39,6 @@ class Dashboard extends Component {
   }
 
   render() {
-    console.log('render again');
     return <div>
       <div className="float-left">
         <h1>Dashboard de finanzas</h1>

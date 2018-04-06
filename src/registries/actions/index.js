@@ -18,8 +18,8 @@ export const setNewRegistry = (registryData) =>
 export const toggleEditButtons = (tableId) => {
   return {
     type: TOGGLEDITMODE,
-    tableId
-  }
+    tableId,
+  };
 };
 
 // Accion para editar

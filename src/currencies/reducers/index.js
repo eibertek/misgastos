@@ -16,7 +16,7 @@ export default (state = new List([]), action) => {
       const deleteIndex = state.findIndex(item => item.get('id') === action.id);
       return state.delete(deleteIndex);
     case 'SET_FIRST_TIME_COUNTRY_CURRENCY':
-      return state.push( { ...action.currency, dolar: action.dolar} );
+      return state.push( { ...action.currency, dolar: action.dolar, default: true, } );
     default:
       return state;
   }

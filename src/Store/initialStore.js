@@ -11,7 +11,7 @@ export default {
     editMode: {
       registries: false,
       accounts: false,
-      currencies: false,
+      currenciesSettings: false,
     }
   },
 };

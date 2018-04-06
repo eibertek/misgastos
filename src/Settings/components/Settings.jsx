@@ -8,6 +8,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import CountrySelect from 'src/countries';
 import '../styles.scss';
 import CurrenciesListComponent from "src/currencies/components/currenciesList.jsx";
+import CurrencyComponent from "src/currencies/components/currencies.jsx";
 
 
 class Settings extends React.Component {
@@ -24,6 +25,18 @@ class Settings extends React.Component {
 
   handleClose = () => {
     this.setState({ show: false });
+  }
+
+  toggleEdit = tableId => {
+    return this.props.toggleEditButtons(tableId);
+  }
+
+  editModeEnabled = (tableId) => {
+    return this.props.editModes && this.props.editModes[tableId];
+  }
+
+  renderStatus = (tableId) => {
+    return this.editModeEnabled(tableId) ? 'btn-danger' : 'btn-info';
   }
 
   handleShow = () => {
@@ -57,11 +70,22 @@ class Settings extends React.Component {
             </TabPanel>
             <TabPanel>
               Moneda por default <br/>
-              <CurrenciesListComponent
-              editMode={false}
-              tableId="currenciesSettings"
-              rows={this.props.store.currencies}
-              /> <br/>
+              <div>
+                <button
+                  className={'btn ' + this.renderStatus('currenciesSettings')}
+                  onClick={() => this.toggleEdit('currenciesSettings')}>
+                  Editar Monedas
+                </button>
+                <CurrenciesListComponent
+                  editMode={this.editModeEnabled('currenciesSettings')}
+                  isTable={true}
+                  tableId="currenciesSettings"
+                  rows={this.props.store.currencies}
+                /> <br/>
+             </div>
+              <div>Nueva cuenta </div>
+              <CurrencyComponent isRow
+                 canModify={true} />
             </TabPanel>
           </Tabs>
           <button onClick={this.persistData}>OK</button>
