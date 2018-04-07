@@ -46,6 +46,15 @@ class Dashboard extends Component {
         <h5>Moneda: {this.props.currency.get('name')} ({this.props.currency.get('symbol')})</h5>
       </div>
       <div className="clearfix"></div>
+      <div>FILTROS</div>
+      <div>
+      <select><option>Cuentas</option></select>
+      <select><option>Monedas</option></select>
+      <input placeholder="Fecha Desde"/>
+      <input placeholder="Fecha Hasta"/> 
+      <input placeholder="Buscar por nombre"/> 
+      </div>
+      <div className="clearfix"></div>
       <Tabs>
         <TabList>
           <Tab>Registros</Tab>
