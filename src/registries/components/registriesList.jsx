@@ -16,6 +16,10 @@ class RegistriesListComponent extends Component {
     editMode: PropTypes.bool,
   }
 
+  totals = (col) => {
+    return this.props.rows.map(row => row[col]).reduce((a,b) => parseFloat(a) + parseFloat(b));
+  }
+
   renderTable(){
     return <div>
       <h2>Registros:</h2>
@@ -33,6 +37,14 @@ class RegistriesListComponent extends Component {
         </thead>
        <tbody>
        {this.renderRows(true)}
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{this.totals('debit')}</td>
+            <td>{this.totals('credit')}</td>
+            <td></td>
+          </tr>
        </tbody>
       </table>
     </div>;

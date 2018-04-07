@@ -11,6 +11,10 @@ class AccountsListComponent extends Component {
     editMode: PropTypes.bool,
   }
 
+  totals = () => {
+    return this.props.rows.map(row => row.balance).reduce((a,b) => parseFloat(a) + parseFloat(b));
+  }
+
   renderTable(){
     return <div>
       <h2>Cuentas:</h2>
@@ -27,6 +31,11 @@ class AccountsListComponent extends Component {
         </thead>
        <tbody>
        {this.renderRows(true)}
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{this.totals()}</td>
+        <td></td>        
        </tbody>
       </table>
     </div>;
