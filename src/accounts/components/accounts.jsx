@@ -26,6 +26,7 @@ class AccountsComponent extends Component {
     id: PropTypes.string,
     name: PropTypes.string,
     entity: PropTypes.string,
+    currencies: PropTypes.object,
     currency: PropTypes.string,
     description: PropTypes.string,
     balance: PropTypes.number,
@@ -56,7 +57,6 @@ class AccountsComponent extends Component {
   }
 
   componentWillReceiveProps(props) {
-    console.log(props);
     this.setState({
       id: props.id || uuidv4(),
       name: props.name || null,
@@ -75,11 +75,13 @@ class AccountsComponent extends Component {
       canModify={this.props.canModify}
       onChange={this.onChange}
       onChangeDate={this.onChangeDate}
+      onChangeSelect={this.onChange}
       cells={cells}
       formData={formData}
       onSave={this.saveData}
       onDelete={this.deleteData}
       editMode={this.props.editMode}
+      currencies={this.props.currencies}
     />;
   }
 }

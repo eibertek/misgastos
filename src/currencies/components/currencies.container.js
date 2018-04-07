@@ -6,9 +6,9 @@ import { setNewCurrency, editCurrency, deleteCurrency } from '../actions';
 
 const mapStateToProps = (state) => {
  return {
-   defaultCurrency: selectors.currencySelector(state),
- }
-}
+   currencies: selectors.getCurrencies(state)
+ };
+};
 
 const mapDispatcher = () => {
   return (dispatch) => ({

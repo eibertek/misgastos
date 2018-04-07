@@ -43,7 +43,7 @@ class Dashboard extends Component {
       <div className="float-left">
         <h1>Dashboard de finanzas</h1>
         <h5>Pais: {this.props.country.name}</h5>
-        <h5>Moneda: {this.props.currency.name} ({this.props.currency.symbol})</h5>
+        <h5>Moneda: {this.props.currency.get('name')} ({this.props.currency.get('symbol')})</h5>
       </div>
       <div className="clearfix"></div>
       <Tabs>
@@ -70,11 +70,11 @@ class Dashboard extends Component {
             <AccountsList isTable={true}
                           tableId="accounts"
                           rows={this.state.accounts}
-                          defaultCurrency={this.props.currency.symbol}
+                          defaultCurrency={this.props.currency.get('name')}
                           editMode={this.editModeEnabled('accounts')}
             /> </div>
           <div>Nueva cuenta </div>
-          <AccountsComponent canModify={true} currency={this.props.currency.symbol}/>
+          <AccountsComponent canModify={true} />
         </TabPanel>
       </Tabs>
     </div>;

@@ -27,11 +27,11 @@ export default [
     placeholder: '0.00',
     defaultValue: null,
   },
- /* {
+  {
     type: 'text',
     name: 'currency',
     onChange: null,
     placeholder: '$',
     defaultValue: null,
-  }, */
+  },
 ];

@@ -52,6 +52,7 @@ class Settings extends React.Component {
   }
 
   render() {
+    const { currencies } = this.props;
     return <div>
       <div className="float-right settingsIcon">
         <div onClick={this.handleShow}><FontAwesomeIcon icon={faCog}/></div>
@@ -80,7 +81,7 @@ class Settings extends React.Component {
                   editMode={this.editModeEnabled('currenciesSettings')}
                   isTable={true}
                   tableId="currenciesSettings"
-                  rows={this.props.store.currencies}
+                  rows={currencies}
                 /> <br/>
              </div>
               <div>Nueva cuenta </div>

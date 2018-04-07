@@ -1,7 +1,13 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import selectors from 'src/Dashboard/selectors/dashboard.selector';
 import AccountComponent from './accounts.jsx';
 import { setNewAccount, editAccount, deleteAccount } from '../actions';
+
+const mapsProps = (state) => ({
+  currencies: selectors.getCurrencies(state),
+});
+
 
 const mapDispatcher = () => {
   return (dispatch) => ({
@@ -11,4 +17,4 @@ const mapDispatcher = () => {
   });
 };
 
-export default connect(null,mapDispatcher)(AccountComponent);
+export default connect(mapsProps, mapDispatcher)(AccountComponent);

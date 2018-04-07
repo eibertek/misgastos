@@ -83,3 +83,13 @@ export const mockAccounts = (ammount) => {
   }
   return results;
 }
+
+export const mockUSCurrency = () => ({
+  id: uuidv4(),
+  code: 'USD',
+  name: 'US Dolar',
+  symbol: 'U$S',
+  dolar: 1,
+  default: false,
+  dateUpdated: moment().format('DD/MM/YYYY hh:mm:ss'),
+});

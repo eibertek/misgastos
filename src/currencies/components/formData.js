@@ -28,11 +28,4 @@ export default [
     placeholder: '0.00',
     defaultValue: null,
   },
-  {
-    type: 'checkbox',
-    name: 'default',
-    onChange: null,
-    placeholder: null,
-    defaultValue: null,
-  },
 ];

@@ -63,6 +63,12 @@ class RowsComponent extends Component {
         return <td>{celldata.get('name')}</td>;
       }
     }
+    if(cell === 'currency') {
+      const celldata = this.props.currencies.find(curr => curr.get('id') === this.props.cells[cell]);
+      if(celldata) {
+        return <td>{celldata.get('name')}</td>;
+      }
+    }    
     return <td>{this.props.cells[cell]}</td>;
   }
 
@@ -81,6 +87,7 @@ class RowsComponent extends Component {
   renderInput = (values) => {
     const { type, name, placeholder } = values;
     if(name==='account') return this.renderAccounts();
+    if(name==='currency') return this.renderCurrencies();
     const onChangeFn = type==='date' ? this.props.onChangeDate : this.props.onChange;
     const defaultValue = this.props.cells[name];
     const defValue = (type==='date' && defaultValue ? Moment(defaultValue, 'DD/MM/YYYY').format('YYYY-MM-DD'): defaultValue) || '';
@@ -92,6 +99,12 @@ class RowsComponent extends Component {
       {this.props.accounts.map(account => <option key={account.get('id')} value={account.get('id')}>{account.get('name')}</option>)};
     </select>
   }
+
+  renderCurrencies = () => {
+    return <select name='currency' onChange={this.props.onChangeSelect} value={this.props.cells['currency']}>
+      {this.props.currencies.map(currency => <option key={currency.get('id')} value={currency.get('id')}>{currency.get('name')}</option>)};
+    </select>
+  }  
 
   renderForm = () => {
     let item = 0;

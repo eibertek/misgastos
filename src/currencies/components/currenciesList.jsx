@@ -33,14 +33,15 @@ class CurrenciesListComponent extends Component {
     </div>;
   }
 
-  renderRows = (isRow) => (this.props.rows.map(row =>
-        <Currencies
+  renderRows = (isRow) => (this.props.rows.map(row => {
+    const rowData = row.toJS ? row.toJS() : row;
+        return <Currencies
           isRow
           key={row.id}
-          {...row}
-          currency={this.props.defaultCurrency}
+          {...rowData}
           editMode={this.props.editMode}
-        />));
+        />})
+    );
 
 
   render = () => this.props.isTable ?

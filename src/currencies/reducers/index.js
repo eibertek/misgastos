@@ -1,9 +1,9 @@
-import { List } from 'immutable';
+import { List, fromJS } from 'immutable';
+import Moment from 'moment';
 import {DELETECURRENCY, EDITCURRENCY, SAVECURRENCY} from '../actions/index';
 
 export default (state = new List([]), action) => {
   const payload  = action.currencyData;
-  console.log(payload);
   switch (action.type) {
     case SAVECURRENCY:
       return state.push(payload);
@@ -16,8 +16,8 @@ export default (state = new List([]), action) => {
     case DELETECURRENCY:
       const deleteIndex = state.findIndex(item => item.get('id') === action.id);
       return state.delete(deleteIndex);
-    case 'SET_FIRST_TIME_COUNTRY_CURRENCY':
-      return state.push( { ...action.currency, dolar: action.dolar, default: true, } );
+    case 'SET_FIRST_TIME_COUNTRY':
+      return state.push( fromJS({ ...action.currency, dolar: action.dolar, default: true, dateUpdated: Moment().format('DD/MM/YYYY hh:mm:ss') }) );
     default:
       return state;
   }

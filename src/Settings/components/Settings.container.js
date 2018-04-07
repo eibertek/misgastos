@@ -6,8 +6,8 @@ import { toggleEditButtons } from 'src/registries/actions/';
 import selectors from 'src/Dashboard/selectors/dashboard.selector';
 
 const mapStateToProps = (state) => ({
-    store: state,
-    editModes: selectors.getEditMode(state)
+    editModes: selectors.getEditMode(state),
+    currencies: selectors.getCurrencies(state)
   });
 
 const mapDispatcher = (dispatch) => {

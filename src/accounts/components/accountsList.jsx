@@ -37,7 +37,6 @@ class AccountsListComponent extends Component {
           isRow
           key={row.id}
           {...row}
-          currency={this.props.defaultCurrency}
           editMode={this.props.editMode}
         />));
 
