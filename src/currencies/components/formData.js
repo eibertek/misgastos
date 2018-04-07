@@ -28,11 +28,11 @@ export default [
     placeholder: '0.00',
     defaultValue: null,
   },
- /* {
-    type: 'text',
-    name: 'currency',
+  {
+    type: 'checkbox',
+    name: 'default',
     onChange: null,
-    placeholder: '$',
+    placeholder: null,
     defaultValue: null,
-  }, */
+  },
 ];

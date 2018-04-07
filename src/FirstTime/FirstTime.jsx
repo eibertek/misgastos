@@ -1,6 +1,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import uuidv4 from 'uuid/v4';
 import CountrySelect from "../countries";
 import './styles.scss';
 
@@ -25,7 +26,9 @@ class FirstTime extends React.Component {
   }
 
   persistData = () => {
-    this.props.saveFirstTime(this.state);
+    const { currency }  = this.state;
+    currency.id = uuidv4();
+    this.props.saveFirstTime({ currency, ...this.state});
     this.props.closePopup();
   }
 

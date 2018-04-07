@@ -3,6 +3,7 @@ import {DELETECURRENCY, EDITCURRENCY, SAVECURRENCY} from '../actions/index';
 
 export default (state = new List([]), action) => {
   const payload  = action.currencyData;
+  console.log(payload);
   switch (action.type) {
     case SAVECURRENCY:
       return state.push(payload);

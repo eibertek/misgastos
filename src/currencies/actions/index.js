@@ -6,11 +6,11 @@ export const DELETECURRENCY = '[DELETE][CURRENCY] delete registry';
 export const GETCURRENCY = '[RUN][CURRENCY] get ACCOUNTS to store';
 
 // Accion para registrar nuevo registro
-export const setNewCurrency = (accountData) =>
+export const setNewCurrency = (currencyData) =>
   {
     return {
       type: SAVECURRENCY,
-      accountData
+      currencyData
     }
   }
 

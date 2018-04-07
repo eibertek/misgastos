@@ -19,10 +19,11 @@ class CurrenciesListComponent extends Component {
           <tr>
             {this.props.editMode ? <th>Actions</th>: null}
             <th>Name</th>
-            <th>Entity</th>
-            <th>Description</th>
-            <th>balance</th>
-            <th>currency</th>
+            <th>Code</th>
+            <th>Symbol</th>
+            <th>dolar</th>
+            <th>default</th>
+            <th>dateUpdated</th>
           </tr>
         </thead>
        <tbody>

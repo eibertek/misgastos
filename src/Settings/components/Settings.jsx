@@ -8,7 +8,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import CountrySelect from 'src/countries';
 import '../styles.scss';
 import CurrenciesListComponent from "src/currencies/components/currenciesList.jsx";
-import CurrencyComponent from "src/currencies/components/currencies.jsx";
+import CurrencyComponent from "src/currencies/components/currencies.container";
 
 
 class Settings extends React.Component {
@@ -84,8 +84,11 @@ class Settings extends React.Component {
                 /> <br/>
              </div>
               <div>Nueva cuenta </div>
-              <CurrencyComponent isRow
-                 canModify={true} />
+              <table>
+                <tr>
+                <CurrencyComponent canModify={true} />
+                </tr>
+              </table>
             </TabPanel>
           </Tabs>
           <button onClick={this.persistData}>OK</button>

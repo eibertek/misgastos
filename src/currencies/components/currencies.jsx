@@ -16,7 +16,7 @@ class CurrencyComponent extends Component {
       symbol: this.props.symbol || null,
       dolar: this.props.dolar || 0.00,
       default: this.props.default || false,
-      dateUpdated: this.props.dateUpdated || null,
+      dateUpdated: this.props.dateUpdated || Moment.now(),
     };
   }
 
@@ -66,6 +66,7 @@ class CurrencyComponent extends Component {
       symbol: props.symbol || null,
       dolar: props.dolar || 0.00,
       dateUpdated: props.dateUpdated || null,
+      default: props.default || false,
     });
   }
 

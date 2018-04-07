@@ -6,6 +6,7 @@ import {
 
 
 function* saveCurrencyData({currencyData}) {
+  //Traer moneda por default
   yield put({ type: SAVECURRENCY, currencyData });
 }
 
@@ -15,6 +16,6 @@ function* runSaveCurrencyData() {
 
 export default function* currencySaga() {
   yield all([
-    runSaveAccountData(),
+    runSaveCurrencyData(),
   ]);
 }
