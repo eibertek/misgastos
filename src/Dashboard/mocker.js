@@ -9,28 +9,28 @@ const getAccount = (item) => {
   const random = () => accounts[Math.floor(Math.random()*accounts.length)];
   if(item >= 0 ) return account[item];
   return random();
-}
+};
 
 const getName = (item) => {
   const accounts = ['VISA', 'CTA CTE', 'GASTOS VARIOS', 'PAGOS', 'INGRESO'];
   const random = () => accounts[Math.floor(Math.random()*accounts.length)];
   if(item >= 0 ) return account[item];
   return random();
-}
+};
 
 const getEntity = (item) => {
   const accounts = ['BANCO GALICIA', 'EDESUR', 'FIBERTEL', 'CASA', 'AGUAS'];
   const random = () => accounts[Math.floor(Math.random()*accounts.length)];
   if(item >= 0 ) return account[item];
   return random();
-}
+};
 
 const getDescription = (item) => {
   const accounts = ['Tarjetas', 'Gastos Varios', 'Otros', 'Ingresos', 'Detalles'];
   const random = () => accounts[Math.floor(Math.random()*accounts.length)];
   if(item >= 0 ) return account[item];
   return random();
-}
+};
 
 const mockRegistry = ({ date, account, name, debit, credit, dolar }) => {
   return {
@@ -42,7 +42,7 @@ const mockRegistry = ({ date, account, name, debit, credit, dolar }) => {
     credit,
     dolar,
   };
-}
+};
 
 const mockAccount = ({ name, entity, description, balance }) => {
   return {
@@ -52,7 +52,7 @@ const mockAccount = ({ name, entity, description, balance }) => {
     description,
     balance,
   };
-}
+};
 
 export const mockRegistries = (ammount, dolar) => {
   const results = [];
@@ -68,7 +68,7 @@ export const mockRegistries = (ammount, dolar) => {
     results.push(registry);
   }
   return results;
-}
+};
 
 export const mockAccounts = (ammount) => {
   let results = [];
@@ -82,7 +82,7 @@ export const mockAccounts = (ammount) => {
     }));
   }
   return results;
-}
+};
 
 export const mockUSCurrency = () => ({
   id: uuidv4(),
