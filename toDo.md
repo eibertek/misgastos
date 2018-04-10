@@ -112,3 +112,14 @@ Valor <--- si es positivo es debito, negativo es credito
 Valor del dolar <--- tiene que traer el valor de la cuenta, que a su vez lo trae de la moneda. 
 si la cuenta que se elige no tiene actualizado el valor para ese dia, mostrar mensaje en rojo
 
+
+A- En registros, agregar un dropdown de las monedas, para que actualice la informacion segun el dolar de esa moneda. a esto tengo que cargarle el valor del dolar.
+Ver todo en [Moneda]
+B- Poner los subtotales
+C- Otros FIltros
+   * Año
+   * Mes
+   * Cuenta
+   Buscar por nombre
+
+Altas de registro: ver de que forma presentar mejor estos datos, ya que el Form se ve bastante feo, lo mejor seria abstraer el form para que se pueda ver por separado
