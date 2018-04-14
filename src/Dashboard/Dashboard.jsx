@@ -4,14 +4,13 @@ import RegistriesList from '../registries/components/registriesList.jsx';
 import AccountsList from '../accounts/components/accountsList.jsx';
 import 'react-tabs/style/react-tabs.scss';
 import './styles.scss';
-import RegistriesComponent from '../registries/components/registries.container';
+import RegistriesComponent from '../registries/components/registryForm.container';
 import AccountsComponent from '../accounts/components/accounts.container';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       registries:  this.props.registries.toJS(),
       accounts: this.props.accounts.toJS(),

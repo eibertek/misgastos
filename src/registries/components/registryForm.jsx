@@ -1,13 +1,14 @@
-import { Component } from 'react';
+import { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import uuidv4 from 'uuid/v4';
 import { fromJS } from 'immutable';
 import Moment from 'moment';
 import RowsComponent from 'src/commons/Rows/RowsComponent.jsx';
 import formData from './formData';
-import './styles.scss';
+import Form from 'src/commons/Form/Form.jsx';
+import Select from 'src/commons/Form/Select/Select.jsx';
 
-class RegistriesComponent extends Component {
+class RegistriesForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,8 +25,6 @@ class RegistriesComponent extends Component {
   }
 
   static propTypes = {
-    canModify: PropTypes.bool,
-    isRow: PropTypes.bool,
     render: PropTypes.func,
     id: PropTypes.string,
     date: PropTypes.string,
@@ -43,9 +42,23 @@ class RegistriesComponent extends Component {
   }
 
   onChange = evt => this.setState({[evt.target.name]: evt.target.value});
+
   onChangeDate = evt => {
     return this.setState({[evt.target.name]: Moment(evt.target.value, 'YYYY-MM-DD').format('DD/MM/YYYY')})
   };
+
+  renderAccounts = ({ name, type, label}) => {
+    const { accounts } = this.props;
+    if(accounts.size<1) return null;
+    const accountsJS = accounts.toJS().map( act => ({ key: act.id, value: act.name }));
+    return <Select 
+      name={name} 
+      onChange={this.onChange} 
+      label='Cuenta'
+      value={accountsJS[0].key}
+      options={accountsJS} 
+    />;
+  }
 
   saveData = () => {
     if(!this.props.editMode) {
@@ -56,44 +69,15 @@ class RegistriesComponent extends Component {
     }
   };
 
-  deleteData = () => {
-    const response = confirm('Desea borrar este registro?');
-    if(response)
-      this.props.deleteRegistry(this.state.id);
-  }
-
-  componentWillReceiveProps(props) {
-    this.setState({
-      id: props.id || uuidv4(),
-      date: props.date || null,
-      account: props.account || null,
-      name: props.name || null,
-      description: props.description || null,
-      debit: props.debit || 0.00,
-      credit: props.credit || 0.00,
-      balance: props.balance || 0.00,
-      dolar: props.dolar || 0.00,
-    })
-  }
-
   render(){
-    const { id, description, balance, ...cells} = this.state;
-    return <RowsComponent
-      isRow={this.props.isRow}
-      render={this.props.render}
-      canModify={this.props.canModify}
-      onChange={this.onChange}
-      onChangeDate={this.onChangeDate}
-      cells={cells}
-      formData={formData}
-      onSave={this.saveData}
-      onDelete={this.deleteData}
-      editMode={this.props.editMode}
-      accounts={this.props.accounts}
-      onChangeSelect={this.onChange}
-    />;
+    return <Form onSave={this.saveData}>
+    {formData.map(field => <Fragment 
+      {...field} 
+      renderMethod={this[field.renderMethod] || null} 
+      onChange={this[field.onChange]} />)}
+    </Form>
   }
 }
 
 
-export default RegistriesComponent;
+export default RegistriesForm;

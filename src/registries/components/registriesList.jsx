@@ -38,9 +38,7 @@ class RegistriesListComponent extends Component {
        <tbody>
        {this.renderRows(true)}
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td colspan={3} style={{fontSize:'1.2rem', fontWeight:500}}> TOTALES </td>
             <td>{this.totals('debit')}</td>
             <td>{this.totals('credit')}</td>
             <td></td>

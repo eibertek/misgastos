@@ -8,11 +8,7 @@ const getCurrencies = state => state.currencies;
 
 const countrySelector = createSelector(
   firstTimeData,
-  ({country}) => {
-    console.log(country);
-    return country;
-  }
-);
+  ({ country }) => country );
 
 const defaultCurrencySelector = createSelector(
   getCurrencies,
@@ -30,6 +26,7 @@ const getEditMode = createSelector(
 
 
 export default {
+  firstTimeData,
   countrySelector,
   defaultCurrencySelector,
   getRegistries,

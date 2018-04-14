@@ -8,10 +8,10 @@ import Settings from './Settings';
 export default class App extends Component {
   constructor(props) {
     super(props);
-    console.log(props.loadData)
+    const { country } = props.loadData;
     this.state = {
       time: new Moment(),
-      firstTime: true,
+      firstTime: !!!country ? true : false,
       settings: false,
     };
   }
@@ -34,7 +34,7 @@ export default class App extends Component {
   }
 
   render() {
-    if(this.state.error) return <div>OCURRIO UN ERROR</div>;
+    if(this.state.error) return <div>OCURRIO UN ERROR {JSON.stringify(this.state.error)}</div>;
     return this.state.firstTime ? <FirstTimeComponent closePopup={this.togglePopup}></FirstTimeComponent> :
       <Fragment>
         <Settings />

@@ -31,9 +31,7 @@ class AccountsListComponent extends Component {
         </thead>
        <tbody>
        {this.renderRows(true)}
-        <td></td>
-        <td></td>
-        <td></td>
+        <td colspan={3} style={{fontSize:'1.2rem', fontWeight:500}}> TOTALES </td>
         <td>{this.totals()}</td>
         <td></td>        
        </tbody>
