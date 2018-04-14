@@ -11,6 +11,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 class Dashboard extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       registries:  this.props.registries.toJS(),
       accounts: this.props.accounts.toJS(),

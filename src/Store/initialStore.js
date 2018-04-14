@@ -8,6 +8,7 @@ try {
 }catch(e) {
   console.log('error retreiving the store', e);
 }
+
 export default {
   userSetup: store.userSetup || {},
   registries: fromJS(store.registries) || mockedData,

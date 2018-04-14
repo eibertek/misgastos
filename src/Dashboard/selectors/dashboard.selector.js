@@ -8,7 +8,10 @@ const getCurrencies = state => state.currencies;
 
 const countrySelector = createSelector(
   firstTimeData,
-  ({country}) => country
+  ({country}) => {
+    console.log(country);
+    return country;
+  }
 );
 
 const defaultCurrencySelector = createSelector(

@@ -11,7 +11,7 @@ export default class App extends Component {
     console.log(props.loadData)
     this.state = {
       time: new Moment(),
-      firstTime:!!!props.loadData ? true : false,
+      firstTime: true,
       settings: false,
     };
   }

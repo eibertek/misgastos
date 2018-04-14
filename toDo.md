@@ -90,18 +90,6 @@ Nueva cuenta
 Mostar datos
 
 ###TODO
-Settings
-
-Seleccion de moneda
-
-Code | Name | Symbol | Dolar | DateUpdated
-
-DEFAULT CURRENCY
-
-Tabla con monedas [Editar / Eliminar]
-[boton agregar moneda]
-
-Al agregar la cuenta o al modificar, que traiga una lista con las monedas y que aparezca la moneda default en negrita
 
 Una vez que la cuenta esta lista y funcionando. el siguiente paso es poner los subtotales y los totales en ambas tabs (registros y cuentas)
 
@@ -112,7 +100,6 @@ Valor <--- si es positivo es debito, negativo es credito
 Valor del dolar <--- tiene que traer el valor de la cuenta, que a su vez lo trae de la moneda. 
 si la cuenta que se elige no tiene actualizado el valor para ese dia, mostrar mensaje en rojo
 
-
 A- En registros, agregar un dropdown de las monedas, para que actualice la informacion segun el dolar de esa moneda. a esto tengo que cargarle el valor del dolar.
 Ver todo en [Moneda]
 B- Poner los subtotales
@@ -122,4 +109,12 @@ C- Otros FIltros
    * Cuenta
    Buscar por nombre
 
-Altas de registro: ver de que forma presentar mejor estos datos, ya que el Form se ve bastante feo, lo mejor seria abstraer el form para que se pueda ver por separado
+Backlog:
+
+* Crear intervalo de guardado
+* Permitir elegir moneda por default (poner un radio button y que tome la moneda por default)
+* Filtros
+  * Registros
+  * Cuentas
+* Poder Agregar  filtros de manera sencilla
+* Mostrar mensaje si la moneda no tiene actualizado el valor en el dia
