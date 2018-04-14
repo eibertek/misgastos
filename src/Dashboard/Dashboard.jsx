@@ -7,6 +7,8 @@ import './styles.scss';
 import RegistriesComponent from '../registries/components/registryForm.container';
 import AccountsComponent from '../accounts/components/accounts.container';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import RegistryFilters from 'src/registries/Filters/filters.jsx';
+import AccountsFilters from 'src/accounts/Filters/filters.jsx';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -46,22 +48,14 @@ class Dashboard extends Component {
         <h5>Moneda: {this.props.currency.get('name')} ({this.props.currency.get('symbol')})</h5>
       </div>
       <div className="clearfix"></div>
-      <div>FILTROS</div>
-      <div>
-      <select><option>Cuentas</option></select>
-      <select><option>Monedas</option></select>
-      <input placeholder="Fecha Desde"/>
-      <input placeholder="Fecha Hasta"/> 
-      <input placeholder="Buscar por nombre"/> 
-      </div>
-      <div className="clearfix"></div>
       <Tabs>
         <TabList>
           <Tab>Registros</Tab>
           <Tab>Cuentas</Tab>
         </TabList>
         <TabPanel>
-          <div className="RegistriesList">
+          <RegistryFilters />
+          <div className="tabList">
             <button className={'btn ' + this.renderStatus('registries')} onClick={() => this.toggleEdit('registries')}>Editar Registros</button>
             <RegistriesList isTable={true}
                             tableId="registries"
@@ -74,7 +68,8 @@ class Dashboard extends Component {
           </div>
         </TabPanel>
         <TabPanel>
-          <div>
+          <AccountsFilters />
+          <div className="tabList">
             <button className={'btn ' + this.renderStatus('accounts')} onClick={() => this.toggleEdit('accounts')}>Editar Cuentas</button>
             <AccountsList isTable={true}
                           tableId="accounts"
