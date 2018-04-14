@@ -17,7 +17,7 @@ class RegistriesListComponent extends Component {
   }
 
   totals = (col) => {
-    return this.props.rows.map(row => row[col]).reduce((a,b) => parseFloat(a) + parseFloat(b));
+    return this.props.rows.map(row => row[col]).reduce((a,b) => parseFloat(a) + parseFloat(b), 0);
   }
 
   renderTable(){

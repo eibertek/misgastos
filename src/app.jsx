@@ -8,9 +8,10 @@ import Settings from './Settings';
 export default class App extends Component {
   constructor(props) {
     super(props);
+    console.log(props.loadData)
     this.state = {
       time: new Moment(),
-      firstTime:true,
+      firstTime:!!!props.loadData ? true : false,
       settings: false,
     };
   }

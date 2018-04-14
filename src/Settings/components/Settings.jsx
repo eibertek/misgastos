@@ -46,6 +46,24 @@ class Settings extends React.Component {
     this.setState({country: data.country});
   }
 
+  saveTosessionStorage = () => {
+    const { store } = this.props;
+    const storeFormatted = {
+      userSetup: store.userSetup,
+      registries: store.registries.toJS(),
+      accounts: store.accounts.toJS(),
+      currencies: store.currencies.toJS(),
+    }
+    console.log(storeFormatted);
+    sessionStorage.setItem('store',
+      btoa(
+        encodeURIComponent(
+          JSON.stringify(storeFormatted)
+        )
+      )
+    );
+  }
+
   persistData = () => {
     this.handleClose();
     this.props.saveCountry({country: this.state.country});
@@ -59,6 +77,7 @@ class Settings extends React.Component {
       </div>
         <Modal classNames={{modal:'settings'}} little open={this.state.show} onClose={this.handleClose}>
           <h5>Settings</h5>
+          <button onClick={this.saveTosessionStorage}>GUARDAR DATOS en la maquina</button>
           <hr/>
           <Tabs className="tabs">
             <TabList>
@@ -93,6 +112,7 @@ class Settings extends React.Component {
             </TabPanel>
           </Tabs>
           <button onClick={this.persistData}>OK</button>
+          <button onClick={this.handleClose}>CANCEL</button>
         </Modal>
     </div>;
    }

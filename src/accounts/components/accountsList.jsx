@@ -12,7 +12,7 @@ class AccountsListComponent extends Component {
   }
 
   totals = () => {
-    return this.props.rows.map(row => row.balance).reduce((a,b) => parseFloat(a) + parseFloat(b));
+    return this.props.rows.map(row => row.balance).reduce((a,b) => parseFloat(a) + parseFloat(b), 0);
   }
 
   renderTable(){

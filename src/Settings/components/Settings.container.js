@@ -7,7 +7,8 @@ import selectors from 'src/Dashboard/selectors/dashboard.selector';
 
 const mapStateToProps = (state) => ({
     editModes: selectors.getEditMode(state),
-    currencies: selectors.getCurrencies(state)
+    currencies: selectors.getCurrencies(state),
+    store: state,
   });
 
 const mapDispatcher = (dispatch) => {
